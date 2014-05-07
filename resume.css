@@ -50,6 +50,7 @@ a {
   background: #f6f6f6;
   padding: 16px;
   border-top: 8px solid #ddd;
+  border-bottom: 8px solid #ddd;
 }
 .main {
   height: 100%;
