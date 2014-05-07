@@ -47,6 +47,16 @@ ul {
   div {
     margin-left: 20px;
   }
+
+  .pdf {
+    margin: 0;
+  }
+
+  @media print {
+    .pdf {
+      display: none;
+    }
+  }
 }
 
 i.fa-caret-right {
@@ -99,12 +109,6 @@ a {
 
   div {
     padding: 0 0 8px 8px;
-  }
-}
-
-@media print {
-  .pdf {
-    display: none;
   }
 }
 

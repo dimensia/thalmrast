@@ -36,6 +36,14 @@ ul {
 .contact div {
   margin-left: 20px;
 }
+.contact .pdf {
+  margin: 0;
+}
+@media print {
+  .contact .pdf {
+    display: none;
+  }
+}
 i.fa-caret-right {
   font-size: 14px;
   font-weight: normal;
