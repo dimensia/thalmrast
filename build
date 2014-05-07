@@ -3,6 +3,7 @@
 gulp less
 git commit -a -m "build"
 git push
+sleep 5
 gulp pdf
 git commit -a -m "build"
 git push
