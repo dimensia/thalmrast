@@ -15,7 +15,7 @@ gulp.task( 'less', function () {
 
 gulp.task( 'pdf', function () {
 
-  var client = new pdf.Pdfcrowd( 'mbradley', 'nxS98sZf' );
+  var client = new pdf.Pdfcrowd( 'mbradley', '9a6e836ed8a31f2eb3b6ab8aab2c7a38' );
   client.convertURI(
     'http://thalmrast.com/resume',
     pdf.saveToFile( 'resume.pdf' ),
