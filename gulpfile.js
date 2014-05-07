@@ -2,9 +2,7 @@
 var gulp       = require( 'gulp' ),
     less       = require( 'gulp-less' ),
     livereload = require( 'gulp-livereload' ),
-    pdf        = require( 'pdfcrowd' ),
-    git        = require( 'gulp-git' ),
-    seq        = require( 'run-sequence' );
+    pdf        = require( 'pdfcrowd' );
 
 gulp.task( 'less', function () {
   return gulp
@@ -39,19 +37,5 @@ gulp.task( 'watch', function() {
     });
 });
 
-gulp.task( 'commit', function() {
-  return gulp.src( './git-test/*' )
-    .pipe( git.commit( 'build', { args: '-a' } ) );
-});
-
-gulp.task( 'upload', [ 'commit' ], function() {
-  return git.push()
-    .end()
-});
-
 gulp.task( 'default', [ 'watch' ] );
-
-gulp.task( 'build', function( cb ) {
-  seq( 'less', 'upload', 'pdf', 'upload', cb );
-});
 

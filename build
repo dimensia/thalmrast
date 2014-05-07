@@ -1,0 +1,9 @@
+#!/bin/bash
+
+gulp less
+git commit -a -m "build"
+git push
+gulp pdf
+git commit -a -m "build"
+git push
+
