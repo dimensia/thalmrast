@@ -2,10 +2,12 @@
 var gulp       = require( 'gulp' ),
     less       = require( 'gulp-less' ),
     livereload = require( 'gulp-livereload' ),
-    pdf        = require( 'pdfcrowd' );
+    pdf        = require( 'pdfcrowd' ),
+    git        = require( 'gulp-git' ),
+    seq        = require( 'run-sequence' );
 
 gulp.task( 'less', function () {
-  gulp
+  return gulp
     .src( 'resume.less' )
     .pipe( less({
       strictImports: true,
@@ -37,5 +39,17 @@ gulp.task( 'watch', function() {
     });
 });
 
+gulp.task( 'upload', function() {
+  gulp.src( './git-test/*' )
+    .pipe( git.commit( 'build', { args: '-a' } ) );
+
+  git.push()
+    .end()
+});
+
 gulp.task( 'default', [ 'watch' ] );
+
+gulp.task( 'build', function( cb ) {
+  seq( 'less', 'upload', 'pdf', 'upload', cb );
+});
 
