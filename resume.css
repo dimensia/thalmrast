@@ -1,0 +1,86 @@
+body {
+  font-family: Oxygen, sans-serif;
+  font-size: 16px;
+}
+.hide {
+  display: none;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+h1 {
+  font-size: 36px;
+}
+ul {
+  padding-left: 15px;
+}
+.sidebar {
+  width: 234px;
+  float: right;
+  clear: right;
+  border-left: 1px solid #aaa;
+  padding: 0 0 0 8px;
+  margin: 16px 0 0 16px;
+}
+.contact {
+  margin-top: 0;
+}
+.contact i {
+  float: left;
+  position: relative;
+  top: 2px;
+}
+.contact div {
+  margin-left: 20px;
+}
+i.fa-caret-right {
+  font-size: 14px;
+  font-weight: normal;
+}
+a {
+  color: #5566dd;
+  text-decoration: none;
+}
+.body {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #f6f6f6;
+  padding: 16px;
+  border-top: 8px solid #ddd;
+}
+.main {
+  height: 100%;
+  overflow: hidden;
+}
+.company {
+  font-size: 18px;
+  font-weight: bold;
+}
+.position {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.time {
+  float: right;
+}
+.skills,
+.projects {
+  font-size: 14px;
+}
+.skills h3,
+.projects h3 {
+  font-size: 14px;
+  border-bottom: 1px solid #aaa;
+  text-transform: uppercase;
+}
+.skills div,
+.projects div {
+  padding: 0 0 8px 8px;
+}
+@media print {
+  .break {
+    margin-top: 180px;
+  }
+}
