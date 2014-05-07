@@ -4,6 +4,10 @@
 body {
   font-family: Oxygen, sans-serif;
   font-size: 16px;
+
+  @media print {
+    font-size: 14px;
+  }
 }
 
 .hide {
@@ -19,6 +23,10 @@ h1, h2, h3 {
 
 h1 {
   font-size: 36px;
+
+  @media print {
+    font-size: 24px;
+  }
 }
 
 ul {
@@ -51,6 +59,10 @@ ul {
 i.fa-caret-right {
   font-size: 14px;
   font-weight: normal;
+
+  @media print {
+    font-size: 12px;
+  }
 }
 
 a {
@@ -75,11 +87,19 @@ a {
 .company {
   font-size: 18px;
   font-weight: bold;
+
+  @media print {
+    font-size: 14px;
+  }
 }
 
 .position {
   font-size: 14px;
   text-transform: uppercase;
+
+  @media print {
+    font-size: 12px;
+  }
 }
 
 .time {
