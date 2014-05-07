@@ -15,6 +15,7 @@ h1 {
 }
 ul {
   padding-left: 15px;
+  margin-top: 8px;
 }
 .sidebar {
   width: 234px;
@@ -78,9 +79,4 @@ a {
 .skills div,
 .projects div {
   padding: 0 0 8px 8px;
-}
-@media print {
-  .break {
-    margin-top: 180px;
-  }
 }
