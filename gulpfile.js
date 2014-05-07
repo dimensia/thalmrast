@@ -39,11 +39,13 @@ gulp.task( 'watch', function() {
     });
 });
 
-gulp.task( 'upload', function() {
-  gulp.src( './git-test/*' )
+gulp.task( 'commit', function() {
+  return gulp.src( './git-test/*' )
     .pipe( git.commit( 'build', { args: '-a' } ) );
+});
 
-  git.push()
+gulp.task( 'upload', [ 'commit' ], function() {
+  return git.push()
     .end()
 });
 
