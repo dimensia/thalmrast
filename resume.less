@@ -48,13 +48,21 @@ ul {
     margin-left: 20px;
   }
 
-  .pdf {
+  .pdf, .html {
     margin: 0;
+  }
+
+  .html {
+    display: none;
   }
 
   @media print {
     .pdf {
       display: none;
+    }
+
+    .html {
+      display: block;
     }
   }
 }

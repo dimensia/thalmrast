@@ -36,12 +36,19 @@ ul {
 .contact div {
   margin-left: 20px;
 }
-.contact .pdf {
+.contact .pdf,
+.contact .html {
   margin: 0;
+}
+.contact .html {
+  display: none;
 }
 @media print {
   .contact .pdf {
     display: none;
+  }
+  .contact .html {
+    display: block;
   }
 }
 i.fa-caret-right {
