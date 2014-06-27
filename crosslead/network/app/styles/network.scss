@@ -1,0 +1,129 @@
+
+@import "bootstrap";
+
+//
+// All styling for the network directive are here
+//
+
+network {
+  .overlay {
+    fill: none;
+    pointer-events: all;
+  }
+
+  text {
+    font-size: 12px;
+  }
+
+  text.cluster {
+    font-size: 14px;
+    text-transform: uppercase;
+    stroke: purple;
+  }
+
+  .link {
+    stroke: #666;
+    stroke-width: 1.5px;
+    stroke-opacity: .6;
+  }
+
+
+  // Node Styles
+
+  .node {
+    stroke: #000;
+    stroke-width: 1.5px;
+
+    text {
+      fill: #000;
+      stroke: #000;
+      stroke-width: 0.5px;
+    }
+  }
+
+  .black-square {
+    fill: #000;
+  }
+
+  .blue-square, .blue-circle, .blue-person {
+    fill: #0000ff;
+  }
+  .blue-square.img, .blue-circle.img, .blue-person.img {
+    stroke: #0000ff;
+  }
+
+  .yellow-circle {
+    fill: #ffff00;
+  }
+  .yellow-circle.img {
+    stroke: #ffff00;
+  }
+  
+  .red-circle {
+    fill: #ff0000;
+  }
+  .red-circle.img {
+    stroke: #ff0000;
+  }
+}
+
+
+//
+// This styling is specific to the demo
+//
+
+body {
+  font-family: Oxygen, Helvetica, sans-serif;
+  background: #eee;
+}
+
+svg {
+  background: #fff;
+}
+
+.controls {
+  background: #fff;
+  float: right;
+  width: 400px;
+  min-height: 218px;
+  padding: 8px;
+  margin: 8px 8px 0 0;
+
+  .header {
+    border-bottom: 1px solid #000;
+    margin-bottom: 8px;
+  }
+
+  label {
+    clear: left;
+    float: left;
+  }
+
+  .field {
+    margin: 8px 0 0 100px;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    margin-top: 8px;
+    clear: both;
+  }
+}
+
+.notes {
+  margin: 8px;
+}
+
+.networkContainer {
+  margin: 8px 8px 0;
+}
+
+.networkContainer, .controls {
+  border: 1px solid #000;
+  box-shadow: 2px 2px 3px #ccc;
+}
+
+
