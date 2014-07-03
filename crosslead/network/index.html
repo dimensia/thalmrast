@@ -9,8 +9,10 @@
   <div class="header">
   </div>
 
-  <div class="networkContainer">
+  <div class="networkContainer" ng-style="{height: height+2+'px'}">
+   <div ng-if="nodes">
    <network width="100%" height="{{ height }}" on-load="onLoad(api)" on-click-node="onClickNode(member,i)" nodes="nodes"></network>
+   </div>
   </div>
 
   <div class="controls">
@@ -53,120 +55,15 @@
   </div>
 
   <div class="notes">
-   Notes:
-   <ul>
-    <li>Supports panning (via drag) and zooming (via scrollwheel)
-    <li>Drag nodes to reposition them
-    <li>Click nodes to select them
-    <li>The network editor on this page is crude and is just for demonstration purposes
-    <li>The random jumble/animation of nodes when the graph is first drawn with nodes that have no positioning data can be eliminated if not desired:  <a href="https://gist.github.com/mbostock/1667139">https://gist.github.com/mbostock/1667139</a>
-    <li>TODO:  Group selection and expand/collapsing of nodes
-    <li>TODO:  The network currently renders all nodes to SVG, even if they are offscreen ... Cull offscreen nodes by doing an overlaps check once the nodes have been laid out
-    <li>TODO:  Create pull request against crosslead-platform
-   </ul>
   </div>
-
 
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="test/client/mock/network/networkData.js" charset="utf-8"></script>
   <script src="app/scripts/directives/network.js" charset="utf-8"></script>
-  <script>
-
-angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
-  .controller( 'NetworkDemoCtrl', ['$scope', 'networkNodeTypes', 'networkData',
-    function($scope, networkNodeTypes, networkData) {
-      $scope.height = Math.round( $(window).height() - 246 );
-
-      $scope.networkNodeTypes = networkNodeTypes;
-      $scope.nodes = networkData.members();
-
-      $scope.selected = null;
-      $scope.nodeType = null;
-      $scope.fixed = false;
-      $scope.scale = 1.0;
-
-      $scope.api = null;
-
-      $scope.onLoad = function(api) {
-        $scope.api = api;
-      }
-
-      function select(member) {
-        $scope.selected = member;
-        $scope.name = member.name;
-        $scope.nodeType = networkNodeTypes.byName[ member.type ];
-        $scope.fixed = !!member.fixed;
-        $scope.scale = member.scale;
-      }
-
-      $scope.onClickNode = function(member) {
-        if ( member.type === 'cluster' ) {
-          $scope.selected = null;
-          return;
-        }
-
-        select(member);
-      }
-
-      function redraw() {
-        if ( $scope.selected ) {
-          $scope.api.redraw($scope.selected);
-        }
-      }
-
-      $scope.$watch( 'selected.name', redraw );
-      $scope.$watch( 'selected.img', redraw );
-
-      $scope.$watch( 'nodeType', function( nv ) {
-        if ( $scope.selected && nv !== $scope.selected.type ) {
-          $scope.selected.type = nv.name;
-          $scope.api.redraw($scope.selected);
-        }
-      });
-
-      $scope.$watch( 'scale', function( scale ) {
-        if ( $scope.selected && scale !== $scope.selected.scale ) {
-          $scope.selected.scale = parseFloat(scale);
-          $scope.api.redraw($scope.selected);
-          $scope.api.force.resume();
-        }
-      });
-
-      $scope.$watch( 'fixed', function( nv ) {
-        if ( $scope.selected && nv !== $scope.selected.type ) {
-          $scope.selected.fixed = nv;
-
-          if ( !nv ) {
-            $scope.api.force.resume();
-          }
-        }
-      });
-
-      $scope.fixAll = function() {
-        $scope.api.nodes().each(function(d) {
-          d.fixed = true;
-        });
-      }
-
-      $scope.freeAll = function() {
-        $scope.api.nodes().each(function(d) {
-          delete d[ 'fixed' ];
-        });
-        $scope.api.force.resume();
-      }
-
-      $scope.addNode = function() {
-        select( $scope.api.add($scope.selected) );
-      }
-
-      $scope.removeNode = function() {
-        $scope.api.remove($scope.selected);
-      }
-    }
-  ]);
-
-  </script>
+  <script src="app/scripts/directives/network.js" charset="utf-8"></script>
+  <script src="app/scripts/services/palantir.js" charset="utf-8"></script>
+  <script src="demo.js" charset="utf-8"></script>
  </body>
 </html>

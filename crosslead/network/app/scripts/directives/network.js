@@ -27,9 +27,9 @@
     var nlen = nodes.length,
         maxId = 0,
         nodesById = {},
-        node;
-
-    var nextGroup = 1;
+        node,
+        nextGroup = 1,
+        linkCount = 0;
     for ( var ni=0; ni<nlen; ni++ ) {
       node = nodes[ ni ];
 
@@ -39,31 +39,38 @@
         maxId = node.id;
       }
 
-      if ( node.root ) {
+      if ( node.root || node.children ) {
         node.group = nextGroup++;
+      }
+
+      if ( node.parent ) {
+        linkCount++;
       }
     }
 
-    var links = new Array( nlen - 1 );
-    for ( var li=1; li<nlen; li++ ) {
-      node = nodes[ li ];
+    var links = new Array( linkCount ),
+        nextLink = 0;
+    for ( var ni=0; ni<nlen; ni++ ) {
+      node = nodes[ ni ];
 
-      var parent = nodesById[ node.parent ];
+      if ( node.parent ) {
+        var parent = nodesById[ node.parent ];
 
-      var link = {
-        source: node,
-        target: parent,
-        value: 1 // TODO
-      };
+        var link = {
+          source: node,
+          target: parent,
+          value: 1 // TODO
+        };
 
-      if ( node.type === 'cluster' ) {
-        link.cluster = true;
-      }
+        if ( node.type === 'cluster' ) {
+          link.cluster = true;
+        }
 
-      links[ li-1 ] = link;
+        links[ nextLink++ ] = link;
 
-      if ( !node.group ) {
-        node.group = parent.group;
+        if ( !node.group ) {
+          node.group = parent.group;
+        }
       }
     }
 
@@ -213,6 +220,14 @@
         //return x.source.group !== x.target.group ? 40 : 20;
       //})
       .charge(-1020);
+
+      //setTimeout(function() {
+ 
+    force.start();
+    for ( var i = 1000; i > 0; i-- ) {
+      force.tick();
+    }
+    force.stop();
 
     var drag = force.drag()
       .on('dragstart', function(d) {
@@ -414,7 +429,11 @@
               width = $(element[0]).parent().width() * parseInt(width, 10) / 100;
             }
 
-            buildGraph( nodeTypes, element[0], scope.width, scope.height, width, scope.nodes, scope );
+            scope.$watch('nodes', function(nv) {
+              if ( nv ) {
+                buildGraph( nodeTypes, element[0], scope.width, scope.height, width, nv, scope );
+              }
+            });
           }
         };
       }
