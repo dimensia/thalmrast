@@ -6,6 +6,10 @@
 //
 
 network {
+  svg {
+    background: #fff;
+  }
+
   .overlay {
     fill: none;
     pointer-events: all;
@@ -13,12 +17,6 @@ network {
 
   text {
     font-size: 12px;
-  }
-
-  text.label {
-    font-size: 14px;
-    text-transform: uppercase;
-    stroke: purple;
   }
 
   .link {
@@ -38,6 +36,12 @@ network {
       fill: #000;
       stroke: #000;
       stroke-width: 0.5px;
+    }
+
+    text.label {
+      font-size: 14px;
+      text-transform: uppercase;
+      stroke: purple;
     }
   }
 
@@ -77,17 +81,9 @@ network {
   }
 }
 
-button.zoom {
-  position: relative;
-  top: -36px;
-  left: 8px;
-  width: 32px;
-  padding-left: 9px;
-}
-
 
 //
-// This styling is specific to the demo
+// This styling is specific to the UI overlaid on the network-map
 //
 
 body {
@@ -95,51 +91,68 @@ body {
   background: #eee;
 }
 
-svg {
-  background: #fff;
-}
+.networkContainer {
+  position: relative;
+  margin: 8px 8px 0;
 
-.controls {
-  background: #fff;
-  float: right;
-  width: 400px;
-  min-height: 218px;
-  padding: 8px;
-  margin: 8px 8px 0 0;
-
-  .header {
-    border-bottom: 1px solid #000;
-    margin-bottom: 8px;
+  .btnBar {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
   }
 
-  label {
-    clear: left;
-    float: left;
+  button.overlay {
+    padding: 4px 9px;
+    height: 28px;
   }
 
-  .field {
-    margin: 8px 0 0 100px;
+  .zoom {
+    width: 32px;
+  }
 
-    input {
-      width: 100%;
+  .helpBtn {
+    margin-left: 32px;
+  }
+
+  .panes {
+    position: absolute;
+    bottom: 8px;
+    right: 0px;
+  }
+
+  .help, .editor {
+    background: #fff;
+    width: 400px;
+    min-height: 218px;
+    padding: 8px;
+    margin: 8px 8px 0 0;
+
+    .header {
+      border-bottom: 1px solid #000;
+      margin-bottom: 8px;
+    }
+
+    label {
+      clear: left;
+      float: left;
+    }
+
+    .field {
+      margin: 8px 0 0 100px;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .buttons {
+      margin-top: 8px;
+      clear: both;
     }
   }
-
-  .buttons {
-    margin-top: 8px;
-    clear: both;
-  }
 }
 
-.notes {
-  margin: 8px;
-}
-
-.networkContainer {
-  margin: 8px 8px 0;
-}
-
-.networkContainer, .controls {
+.networkContainer, .editor, .help {
   border: 1px solid #000;
   box-shadow: 2px 2px 3px #ccc;
 }

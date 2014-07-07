@@ -62,10 +62,6 @@
           value: 1 // TODO
         };
 
-        if ( node.type === 'label' ) {
-          link.label = true;
-        }
-
         links[ nextLink++ ] = link;
 
         if ( !node.group ) {
@@ -151,7 +147,7 @@
       text.setAttribute('x', 0);
 
       var y;
-      if ( !type ) {
+      if ( member.type === 'label' ) {
         y = 0;
       } else if ( type.container === 'square' ) {
         y = 36;
@@ -172,7 +168,7 @@
 
       var type = nodeTypes.byName[ data.type ];
 
-      if ( type ) {
+      if ( data.type !== 'label' ) {
         var imgHref = type.img || data.img;
 
         switch ( type.container ) {
@@ -438,7 +434,7 @@
     var nodes = svg.selectAll('.node');
 
     function sync() {
-      links = links.data(force.links().filter(function(d) { return !d.label; }), function(d) { return d.source.id + '-' + d.target.id; });
+      links = links.data(force.links().filter(function(d) { return d.source.type !== 'label'; }), function(d) { return d.source.id + '-' + d.target.id; });
       links.enter()
         .insert('line', '.node') // insert lines before nodes so that they are beneath the nodes
           .attr('class', 'link');
@@ -459,21 +455,20 @@
           }
 
           var g = $(this),
-              selNode = g.find('.selected');
+              selNode = g.find('.selected'),
+              add = !selNode.length;
 
           if ( !d3.event.shiftKey ) {
-            var add = !selNode.length;
-
             $networkEl.find('.selected').remove();
 
             if (add) {
               addSelect(this, data);
             }
           } else {
-            if ( selNode.length ) {
-              selNode.remove();
-            } else {
+            if ( add ) {
               addSelect(this, data);
+            } else {
+              selNode.remove();
             }
           }
 
@@ -482,7 +477,8 @@
           scope.$apply(function() {
             scope.onClickNode({
               data: data,
-              i: i
+              i: i,
+              selected: add
             });
           });
         }); 
@@ -555,7 +551,9 @@
         var node = {
           id: graph.nextId++,
           name: '',
-          type: source.type
+          type: source.type,
+          parent: source.id,
+          level: 0 // TODO:  need to figure this out more accurately
         };
 
         force.nodes().push(node);
@@ -676,6 +674,9 @@
          */
 
         var nodeTypes = [
+          {
+            name: 'label'
+          },
           {
             name: 'black-square',
             container: 'square',

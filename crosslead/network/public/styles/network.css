@@ -6692,17 +6692,15 @@ button.close {
     display: none !important;
   }
 }
+network svg {
+  background: #fff;
+}
 network .overlay {
   fill: none;
   pointer-events: all;
 }
 network text {
   font-size: 12px;
-}
-network text.label {
-  font-size: 14px;
-  text-transform: uppercase;
-  stroke: purple;
 }
 network .link {
   stroke: #666;
@@ -6717,6 +6715,11 @@ network .node text {
   fill: #000;
   stroke: #000;
   stroke-width: 0.5px;
+}
+network .node text.label {
+  font-size: 14px;
+  text-transform: uppercase;
+  stroke: purple;
 }
 network .black-square {
   fill: #000;
@@ -6746,59 +6749,62 @@ network .selection, network .selected {
   stroke-dasharray: 5,5;
 }
 
-button.zoom {
-  position: relative;
-  top: -36px;
-  left: 8px;
-  width: 32px;
-  padding-left: 9px;
-}
-
 body {
   font-family: Oxygen, Helvetica, sans-serif;
   background: #eee;
 }
 
-svg {
-  background: #fff;
+.networkContainer {
+  position: relative;
+  margin: 8px 8px 0;
 }
-
-.controls {
+.networkContainer .btnBar {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+}
+.networkContainer button.overlay {
+  padding: 4px 9px;
+  height: 28px;
+}
+.networkContainer .zoom {
+  width: 32px;
+}
+.networkContainer .helpBtn {
+  margin-left: 32px;
+}
+.networkContainer .panes {
+  position: absolute;
+  bottom: 8px;
+  right: 0px;
+}
+.networkContainer .help, .networkContainer .editor {
   background: #fff;
-  float: right;
   width: 400px;
   min-height: 218px;
   padding: 8px;
   margin: 8px 8px 0 0;
 }
-.controls .header {
+.networkContainer .help .header, .networkContainer .editor .header {
   border-bottom: 1px solid #000;
   margin-bottom: 8px;
 }
-.controls label {
+.networkContainer .help label, .networkContainer .editor label {
   clear: left;
   float: left;
 }
-.controls .field {
+.networkContainer .help .field, .networkContainer .editor .field {
   margin: 8px 0 0 100px;
 }
-.controls .field input {
+.networkContainer .help .field input, .networkContainer .editor .field input {
   width: 100%;
 }
-.controls .buttons {
+.networkContainer .help .buttons, .networkContainer .editor .buttons {
   margin-top: 8px;
   clear: both;
 }
 
-.notes {
-  margin: 8px;
-}
-
-.networkContainer {
-  margin: 8px 8px 0;
-}
-
-.networkContainer, .controls {
+.networkContainer, .editor, .help {
   border: 1px solid #000;
   box-shadow: 2px 2px 3px #ccc;
 }

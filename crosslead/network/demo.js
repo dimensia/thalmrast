@@ -2,7 +2,7 @@
 angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
   .controller( 'NetworkDemoCtrl', ['$scope', 'networkNodeTypes', 'networkData', 'palantir',
     function($scope, networkNodeTypes, networkData, palantir) {
-      $scope.height = Math.round( $(window).height() - 246 );
+      $scope.height = Math.round( $(window).height() - 20 );
 
       $scope.networkNodeTypes = networkNodeTypes;
 
@@ -21,10 +21,11 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
         $scope.nodes = networkData.members();
       }
 
+      $scope.help = false;
+
       $scope.selected = null;
-      $scope.nodeType = null;
-      $scope.fixed = false;
-      $scope.scale = 1.0;
+      $scope.type = null;
+      //$scope.nodeType = null;
       $scope.zoom = 0;
 
       $scope.api = null;
@@ -33,21 +34,20 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
         $scope.api = api;
       }
 
-      function select(member) {
-        $scope.selected = member;
-        $scope.name = member.name;
-        $scope.nodeType = networkNodeTypes.byName[ member.type ];
-        $scope.fixed = !!member.fixed;
-        $scope.scale = member.scale;
+      function select(data) {
+        console.log('select',data);
+        data.fixed = !!data.fixed;
+        $scope.selected = data;
+        $scope.type = data.type;
+        //$scope.nodeType = networkNodeTypes.byName[ data.type ];
       }
 
-      $scope.onClickNode = function(data) {
-        if ( data.type === 'label' ) {
+      $scope.onClickNode = function(data, i, selected) {
+        if ( selected ) {
+          select(data);
+        } else {
           $scope.selected = null;
-          return;
         }
-
-        select(data);
       }
 
       function redraw() {
@@ -59,23 +59,32 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
       $scope.$watch( 'selected.name', redraw );
       $scope.$watch( 'selected.img', redraw );
 
+      $scope.$watch( 'selected.type', function(type) {
+        console.log('type',type);
+        if ( $scope.selected ) {
+          $scope.api.redraw($scope.selected);
+        }
+      });
+      /*
       $scope.$watch( 'nodeType', function( nv ) {
-        if ( $scope.selected && nv !== $scope.selected.type ) {
+        console.log('nodeType nv',nv);
+        if ( $scope.selected && nv.name !== $scope.selected.type ) {
           $scope.selected.type = nv.name;
           $scope.api.redraw($scope.selected);
         }
       });
+      */
 
-      $scope.$watch( 'scale', function( scale ) {
-        if ( $scope.selected && scale !== $scope.selected.scale ) {
+      $scope.$watch( 'selected.scale', function( scale ) {
+        if ( $scope.selected ) {
           $scope.selected.scale = parseFloat(scale);
           $scope.api.redraw($scope.selected);
           $scope.api.force.resume();
         }
       });
 
-      $scope.$watch( 'fixed', function( nv ) {
-        if ( $scope.selected && nv !== $scope.selected.type ) {
+      $scope.$watch( 'selected.fixed', function( nv ) {
+        if ( $scope.selected ) {
           $scope.selected.fixed = nv;
 
           if ( !nv ) {
@@ -103,6 +112,7 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
 
       $scope.removeNode = function() {
         $scope.api.remove($scope.selected);
+        $scope.selected = null;
       }
 
       $scope.zoomIn = function() {
