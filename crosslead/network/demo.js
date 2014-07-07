@@ -9,7 +9,12 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
       if ( true ) {
         d3.json('intuit.json', function(data) {
           $scope.$apply(function() {
-            $scope.nodes = palantir.adapt(data);
+            if ( true ) {
+              $scope.nodes = data;
+            } else {
+              $scope.nodes = palantir.adapt(data);
+            }
+            window.demoNodes = $scope.nodes;
           });
         });
       } else {
@@ -20,6 +25,7 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
       $scope.nodeType = null;
       $scope.fixed = false;
       $scope.scale = 1.0;
+      $scope.zoom = 0;
 
       $scope.api = null;
 
@@ -35,13 +41,13 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
         $scope.scale = member.scale;
       }
 
-      $scope.onClickNode = function(member) {
-        if ( member.type === 'cluster' ) {
+      $scope.onClickNode = function(data) {
+        if ( data.type === 'label' ) {
           $scope.selected = null;
           return;
         }
 
-        select(member);
+        select(data);
       }
 
       function redraw() {
@@ -97,6 +103,14 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
 
       $scope.removeNode = function() {
         $scope.api.remove($scope.selected);
+      }
+
+      $scope.zoomIn = function() {
+        $scope.zoom = Math.min( $scope.zoom + 1, 2 );
+      }
+
+      $scope.zoomOut = function() {
+        $scope.zoom = Math.max( $scope.zoom - 1, 0 );
       }
     }
   ]);

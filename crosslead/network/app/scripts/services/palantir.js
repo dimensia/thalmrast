@@ -26,14 +26,21 @@ angular.module('clNetwork')
   .service('palantir', [
     function() {
 
-      function lower(s) {
-        return s.toLowerCase();
+      function find( arr, pred ) {
+        for ( var i=0, len=arr.length; i<len; i++ ) {
+          var el = arr[i];
+          if ( pred(el) ) {
+            return el;
+          }
+        }
+
+        return null;
       }
 
       // Example:  detailedMatch( 'John Arthur Doe', 'John Doe' ) returns true
       function detailedMatch( source, match ) {
-        var swords = source.split(' ').map(lower),
-            mwords = match.split(' ').map(lower);
+        var swords = source.split(' ').map(angular.lowercase),
+            mwords = match.split(' ').map(angular.lowercase);
 
         return mwords.every(function(word) { return swords.indexOf(word) >= 0; });
       }
@@ -43,16 +50,7 @@ angular.module('clNetwork')
         if ( exact )
           return exact;
 
-        var data = metadata.data;
-        for ( var di=0, dlen=data.length; di<dlen; di++ ) {
-          var d = data[di];
-
-          if ( detailedMatch(d.name, name) ) {
-            return d;
-          }
-        }
-
-        return null;
+        return find(metadata.data, function(d) { return detailedMatch(d.name, name); });
       }
 
       function isExecutive(data) {
@@ -63,12 +61,12 @@ angular.module('clNetwork')
         return data.parent ? metadata.indices.id[ data.parent ] : null;
       }
 
-      function ancestorCount(metadata, data) {
-        var c;
-        for ( c = 0; data.parent && c < 10; c++ ) {
-          data = parentOf(metadata, data);
+      function nextId(metadata) {
+        if ( !metadata.nextId ) {
+          metadata.nextId = ( d3.max( metadata.data, function(d) { return d.id; }) || 0 ) + 1;
         }
-        return c;
+
+        return metadata.nextId++;
       }
 
 
@@ -104,14 +102,10 @@ angular.module('clNetwork')
       }
 
       function generateId(transform, metadata, data) {
-        var value = data[ transform.field ];
+        var value = data.id;
 
         if ( !value ) {
-          if ( !metadata.nextId ) {
-            metadata.nextId = ( d3.max( metadata.data, function(d) { return d[ transform.field ]; }) || 0 ) + 1;
-          }
-
-          data[ transform.field ] = metadata.nextId++;
+          data.id = nextId(metadata);
         }
       }
 
@@ -161,15 +155,23 @@ angular.module('clNetwork')
         }
       }
 
+      function setDepth(transform, metadata, data) {
+        var c, d = data;
+        for ( c = 0; d.parent && c < 10; c++ ) {
+          d = parentOf(metadata, d);
+        }
+        data.depth = c;
+      }
+
       function setType(transform, metadata, data) {
         if ( !data.type ) {
-          var ac = ancestorCount( metadata, data );
+          var depth = data.depth;
 
-          if ( ac <= 1 )
+          if ( depth <= 1 )
             data.type = 'black-square';
-          else if ( ac <= 2 )
+          else if ( depth <= 2 )
             data.type = 'blue-circle';
-          else if ( ac <= 3 )
+          else if ( depth <= 3 )
             data.type = 'red-circle';
           else if ( data.children )
             data.type = 'yellow-circle';
@@ -179,6 +181,68 @@ angular.module('clNetwork')
           if ( !data.img && !data.children )
             data.type = 'person';
         }
+      }
+
+      function labels(transform, metadata, data) {
+
+        if ( data.children ) {
+          var label;
+
+          switch ( data.depth ) {
+          case 1: // ceo
+            label = data.company;
+            break;
+          case 2: // svp
+            label = data.businessUnit;
+            break;
+          case 3: // vp
+            label = data.department;
+            break;
+          }
+
+          if ( label ) {
+            var node = find(metadata.data, function(d) {
+              return d.type === 'label' && d.parent === data.id;
+            });
+
+            if ( !node ) {
+              metadata.data.push({
+                id: nextId(metadata),
+                name: label,
+                type: 'label',
+                parent: data.id,
+                depth: data.depth,
+                level: data.level
+              });
+            }
+          }
+        }
+      }
+
+      function setLevel(transform, metadata, data) {
+        switch ( data.depth ) {
+        case 0:
+        case 1:
+        case 2:
+          data.level = data.img ? 0 : 1;
+          break;
+        case 3:
+          data.level = 1;
+          break;
+        default:
+          data.level = 2;
+        }
+      }
+
+      function setLevelDepth(transform, metadata, data) {
+        var c = 0, d = data;
+        for ( ; d.parent && c < 10; c++ ) {
+          d = parentOf(metadata, d);
+          if ( d.level !== data.level ) {
+            break;
+          }
+        }
+        data.levelDepth = c;
       }
 
       var x = 10, y = 10;
@@ -205,7 +269,7 @@ angular.module('clNetwork')
         { func: rename,        field: 'Senior Director',  rename: 'seniorDirector' },
         { func: rename,        field: 'SVP',              rename: 'svp' },
         { func: rename,        field: 'VP',               rename: 'vp' },
-        { func: generateId,    field: 'id' },
+        { func: generateId },
         { func: normalizeName, field: 'name' },
         { func: normalizeName, field: 'seniorDirector' },
         { func: normalizeName, field: 'svp' },
@@ -214,9 +278,12 @@ angular.module('clNetwork')
         { func: index,         field: 'id' },
         { func: executives },
         { func: setParent,     fields: [ 'seniorDirector', 'vp', 'svp' ] },
+        { func: setDepth },
         { func: setType,       field: 'type' },
-        { func: setType,       field: 'type' },
-        { func: setGrid }
+        { func: setLevel },
+        { func: labels },
+        { func: setLevelDepth }//,
+        //{ func: setGrid }
       ];
 
       return {

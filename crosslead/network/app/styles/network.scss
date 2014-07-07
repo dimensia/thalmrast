@@ -15,7 +15,7 @@ network {
     font-size: 12px;
   }
 
-  text.cluster {
+  text.label {
     font-size: 14px;
     text-transform: uppercase;
     stroke: purple;
@@ -28,7 +28,7 @@ network {
   }
 
 
-  // Node Styles
+  // Node styles
 
   .node {
     stroke: #000;
@@ -65,6 +65,24 @@ network {
   .red-circle.img {
     stroke: #ff0000;
   }
+
+
+  // Selection styles
+
+  .selection, .selected {
+    fill: none;
+    stroke: #888;
+    stroke-width: 1.5px;
+    stroke-dasharray: 5,5;
+  }
+}
+
+button.zoom {
+  position: relative;
+  top: -36px;
+  left: 8px;
+  width: 32px;
+  padding-left: 9px;
 }
 
 

@@ -35,9 +35,9 @@ describe('Directive E2E: network', function () {
     expect(nodes.count()).toBe(12);
   });
 
-  it('should have 3 clusters', function() {
+  it('should have 3 labels', function() {
 
-    var nodes = $$('network text.cluster');
+    var nodes = $$('network text.label');
     expect(nodes.count()).toBe(3);
   });
 

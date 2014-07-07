@@ -6699,7 +6699,7 @@ network .overlay {
 network text {
   font-size: 12px;
 }
-network text.cluster {
+network text.label {
   font-size: 14px;
   text-transform: uppercase;
   stroke: purple;
@@ -6738,6 +6738,20 @@ network .red-circle {
 }
 network .red-circle.img {
   stroke: #ff0000;
+}
+network .selection, network .selected {
+  fill: none;
+  stroke: #888;
+  stroke-width: 1.5px;
+  stroke-dasharray: 5,5;
+}
+
+button.zoom {
+  position: relative;
+  top: -36px;
+  left: 8px;
+  width: 32px;
+  padding-left: 9px;
 }
 
 body {

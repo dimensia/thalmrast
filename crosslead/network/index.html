@@ -3,6 +3,7 @@
   <title>D3 Trial Project</title>
   <link rel="stylesheet" type="text/css" href="public/styles/network.css" media="all" />
   <link href="http://fonts.googleapis.com/css?family=Oxygen:400,300,700" rel="stylesheet" type="text/css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
  </head>
  <body ng-controller="NetworkDemoCtrl"> 
 
@@ -11,7 +12,9 @@
 
   <div class="networkContainer" ng-style="{height: height+2+'px'}">
    <div ng-if="nodes">
-   <network width="100%" height="{{ height }}" on-load="onLoad(api)" on-click-node="onClickNode(member,i)" nodes="nodes"></network>
+    <network width="100%" height="{{ height }}" on-load="onLoad(api)" on-click-node="onClickNode(data,i)" nodes="nodes" zoom="zoom"></network>
+    <button class="btn btn-success zoom" ng-click="zoomOut()"><i class="fa fa-minus"></i></button>
+    <button class="btn btn-success zoom" ng-click="zoomIn()"><i class="fa fa-plus"></i></button>
    </div>
   </div>
 
@@ -55,6 +58,11 @@
   </div>
 
   <div class="notes">
+   <ul>
+    <li>Click to select
+    <li>Drag to move nodes and pan, scrollwheel to zoom
+    <li>Shift+Click and/or Shift-drag to select multiple nodes
+   </ul>
   </div>
 
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
