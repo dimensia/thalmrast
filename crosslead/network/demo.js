@@ -6,10 +6,19 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
 
       $scope.networkNodeTypes = networkNodeTypes;
 
-      if ( true ) {
-        d3.json('intuit.json', function(data) {
+      var params = {};
+      window.location.search.substring(1).split('&').forEach(function(pair) {
+        var nv = pair.split('=');
+        params[ nv[0] ] = nv[1];
+      });
+
+      var dataset = params.dataset || 'intuit';
+      if ( dataset !== 'test' ) {
+
+        d3.json(dataset + '.json', function(data) {
           $scope.$apply(function() {
-            if ( true ) {
+            // crude test to see if the data has been preprocessed already
+            if ( data[0].x && !params.palantir ) {
               $scope.nodes = data;
             } else {
               $scope.nodes = palantir.adapt(data);
@@ -25,7 +34,6 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
 
       $scope.selected = null;
       $scope.type = null;
-      //$scope.nodeType = null;
       $scope.zoom = 0;
 
       $scope.api = null;
@@ -35,11 +43,9 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
       }
 
       function select(data) {
-        console.log('select',data);
         data.fixed = !!data.fixed;
         $scope.selected = data;
         $scope.type = data.type;
-        //$scope.nodeType = networkNodeTypes.byName[ data.type ];
       }
 
       $scope.onClickNode = function(data, i, selected) {
@@ -60,20 +66,10 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
       $scope.$watch( 'selected.img', redraw );
 
       $scope.$watch( 'selected.type', function(type) {
-        console.log('type',type);
         if ( $scope.selected ) {
           $scope.api.redraw($scope.selected);
         }
       });
-      /*
-      $scope.$watch( 'nodeType', function( nv ) {
-        console.log('nodeType nv',nv);
-        if ( $scope.selected && nv.name !== $scope.selected.type ) {
-          $scope.selected.type = nv.name;
-          $scope.api.redraw($scope.selected);
-        }
-      });
-      */
 
       $scope.$watch( 'selected.scale', function( scale ) {
         if ( $scope.selected ) {

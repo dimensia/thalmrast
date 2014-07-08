@@ -228,7 +228,7 @@
     }
 
     function nodeScale(d, level) {
-      return d.level <= level ? ( d.scale || 1 ) : 0;
+      return !d.level || d.level <= level ? ( d.scale || 1 ) : 0;
     }
 
     var baseSvg = d3.select(networkEl)
@@ -258,11 +258,8 @@
           .attr('ry', 4);
 
     var zoomTranslate = [ 0, 0 ],
-        zoomScale = 1;
-
-    var svg = baseSvg
-      .call(
-        d3.behavior.zoom()
+        zoomScale = 1,
+        zoom = d3.behavior.zoom()
           .scaleExtent([0.25, 8])
           .on('zoom', function() {
             if (!d3.event.sourceEvent.shiftKey) {
@@ -270,7 +267,10 @@
               zoomScale = d3.event.scale;
               svg.attr('transform', 'translate(' + d3.event.translate + ')scale(' + d3.event.scale + ')');
             }
-          }) )
+          });
+
+    var svg = baseSvg
+      .call( zoom )
       .append('g');
 
     var graph = membersToNetworkModel( members );
@@ -319,11 +319,11 @@
       .on('drag', function(d, i) {
         var selection = d3.selectAll($('.selected').parent().get());
 
-        //if (selection[0].indexOf(this)==-1) {
-          //selection.classed( 'selected', false);
-          //selection = d3.select( this);
-          //selection.classed( 'selected', true);
-        //} 
+        if (selection[0].indexOf(this)==-1) {
+          $networkEl.find('.selected').remove();
+          selection = d3.select(this);
+          addSelect(this, d);
+        } 
 
         selection.attr('transform', function(d, i) {
           d.x += d3.event.dx;
@@ -335,7 +335,7 @@
         })
 
         // reappend dragged element as last so that its stays on top 
-        //this.parentNode.appendChild(this);
+        this.parentNode.appendChild(this);
         d3.event.sourceEvent.stopPropagation();
       });
 
@@ -491,7 +491,7 @@
 
     force.on('tick', function() {
       links
-        .filter(function(d) { return d.source.level <= zoomLevel; })
+        .filter(function(d) { return !d.source.level || d.source.level <= zoomLevel; })
         .attr('x1', function(d) { return d.source.x; })
         .attr('y1', function(d) { return d.source.y; })
         .attr('x2', function(d) { return d.target.x; })
@@ -499,7 +499,7 @@
 
       nodes
         .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, zoomLevel ) + ')'; })
-        .classed('show', function(d) { return d.level <= zoomLevel });
+        .classed('show', function(d) { return !d.level || d.level <= zoomLevel });
     });
 
     /**
@@ -571,11 +571,34 @@
        * Sets the zoom level for the graph.
        */
       zoom: function(level) {
-        if ( level === zoomLevel )
+        if ( level === zoomLevel ) {
           return;
+        }
 
         var time = 0,
-            duration = 500;
+            duration = 500,
+
+            visibleMembers = members.filter(function(d) { return d.level <= level; }),
+
+            // TODO:  rather than return d.x, d.y ... figure out the bounding box for the node then get rid of the +150/+150/-200/-100 factors below
+            xExtent = d3.extent(visibleMembers, function(d) { return d.x; }),
+            yExtent = d3.extent(visibleMembers, function(d) { return d.y; }),
+
+            $baseSvg = $(baseSvg[0][0]),
+
+            graphWidth = xExtent[1] - xExtent[0] + 150,
+            graphHeight = yExtent[1] - yExtent[0] + 150,
+
+            xZoom = $baseSvg.width() / graphWidth,
+            yZoom = $baseSvg.height() / graphHeight,
+
+            compositeZoom = Math.min( xZoom, yZoom ),
+
+            tx = -( xExtent[0] - 200 ) * compositeZoom,
+            ty = -( yExtent[0] - 100 ) * compositeZoom;
+
+        zoom.scale(compositeZoom);
+        zoom.translate([tx, ty]);
 
         if ( level > zoomLevel ) {
           var levelNodes = nodes.filter(function(d) { return d.level === level; }),
@@ -583,9 +606,9 @@
 
           for ( var levelDepth = 0; levelDepth < 3; levelDepth++ ) {
             var ns = levelNodes.filter(function(d) { return d.levelDepth === levelDepth; });
-
             if ( ns.empty() )
               break;
+
             levelLinks
               .filter(function(d) { return d.source.levelDepth === levelDepth; })
               .attr('x1', function(d) { return d.target.x; })
@@ -596,7 +619,7 @@
               .delay(time)
               .duration(duration)
               .attr('x1', function(d) { return d.source.x; })
-              .attr('y1', function(d) { return d.source.y; })
+              .attr('y1', function(d) { return d.source.y; });
 
             time += duration * 0.5
 
@@ -611,13 +634,11 @@
           }
 
         } else {
-
           var levelNodes = nodes.filter(function(d) { return d.level === zoomLevel; }),
               levelLinks = links.filter(function(d) { return d.source.level === zoomLevel; });
 
           for ( var levelDepth = 3; levelDepth >= 0; levelDepth-- ) {
             var ns = levelNodes.filter(function(d) { return d.levelDepth === levelDepth; });
-
             if ( ns.empty() )
               continue;
 
@@ -639,11 +660,16 @@
               .delay(time)
               .duration(duration)
               .attr('x1', function(d) { return d.target.x; })
-              .attr('y1', function(d) { return d.target.y; })
+              .attr('y1', function(d) { return d.target.y; });
 
             time += duration
           }
         }
+
+        svg
+          .transition()
+          .duration(time+duration)
+          .attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
 
         zoomLevel = level;
       }
