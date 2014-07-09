@@ -73,7 +73,7 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
 
       $scope.$watch( 'selected.scale', function( scale ) {
         if ( $scope.selected ) {
-          $scope.selected.scale = parseFloat(scale);
+          //$scope.selected.scale = parseFloat(scale);
           $scope.api.redraw($scope.selected);
           $scope.api.force.resume();
         }

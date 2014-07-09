@@ -88,7 +88,7 @@
       var type = nodeTypes.byName[ member.type ];
 
       if ( type ) {
-        var imgHref = type.img || member.img;
+        var imgHref = member.img || type.img;
 
         g.setAttribute( 'class', 'node ' + member.type + ( imgHref ? ' img' : '' ) );
 
@@ -111,6 +111,14 @@
           circle.setAttribute('cy', 0);
           g.appendChild(circle);
           break;
+
+        case 'ring':
+          var circle = createSvg('circle');
+          circle.setAttribute('r', imgHref ? 20 : 10);
+          circle.setAttribute('cx', 0);
+          circle.setAttribute('cy', 0);
+          g.appendChild(circle);
+          break;
         }
 
         if ( imgHref ) {
@@ -126,10 +134,18 @@
             img.setAttribute('clip-path','url(#squareImg)');
             break;
           case 'circle':
-            img.setAttribute('x',-27);
-            img.setAttribute('y',-27);
-            img.setAttribute('width',54);
-            img.setAttribute('height',54);
+          case 'ring':
+            if ( member.img ) {
+              img.setAttribute('x',-27);
+              img.setAttribute('y',-27);
+              img.setAttribute('width',54);
+              img.setAttribute('height',54);
+            } else {
+              img.setAttribute('x',-18);
+              img.setAttribute('y',-18);
+              img.setAttribute('width',36);
+              img.setAttribute('height',36);
+            }
             img.setAttribute('clip-path','url(#circleImg)');
             break;
           default:
@@ -227,8 +243,12 @@
       return g;
     }
 
+    function baseNodeScale(d) {
+      return ( d.scale || 1 ) * nodeTypes.byName[ d.type ].scale;
+    }
+
     function nodeScale(d, level) {
-      return !d.level || d.level <= level ? ( d.scale || 1 ) : 0;
+      return !d.level || d.level <= level ? baseNodeScale(d) : 0;
     }
 
     var baseSvg = d3.select(networkEl)
@@ -430,15 +450,35 @@
     // Node and Link rendering
     //
 
-    var links = svg.selectAll('.link');
+    var singleLinks = svg.selectAll('line.link'),
+        doubleLinks = svg.selectAll('g.link');
     var nodes = svg.selectAll('.node');
 
     function sync() {
-      links = links.data(force.links().filter(function(d) { return d.source.type !== 'label'; }), function(d) { return d.source.id + '-' + d.target.id; });
-      links.enter()
-        .insert('line', '.node') // insert lines before nodes so that they are beneath the nodes
+      singleLinks = singleLinks.data(force.links().filter(function(d) { return d.source.type !== 'label' && baseNodeScale(d.source) <= 1; }), function(d) { return d.source.id + '-' + d.target.id; });
+      doubleLinks = doubleLinks.data(force.links().filter(function(d) { return d.source.type !== 'label' && baseNodeScale(d.source) > 1; }), function(d) { return d.source.id + '-' + d.target.id; });
+
+      singleLinks.enter()
+        // insert lines before nodes so that they are beneath the nodes
+        .insert('line', '.node')
           .attr('class', 'link');
-      links.exit()
+
+      singleLinks.exit()
+        .remove();
+
+      var lines = doubleLinks.enter()
+        // insert lines before nodes so that they are beneath the nodes
+        .insert('g', '.node')
+          .attr('class', 'link');
+
+      lines
+        .append('line')
+          .attr('class', 'outer');
+      lines
+        .append('line')
+          .attr('class', 'inner');
+
+      doubleLinks.exit()
         .remove();
 
       nodes = nodes.data(force.nodes(), function(d) { return d.id; });
@@ -490,12 +530,20 @@
     sync();
 
     force.on('tick', function() {
-      links
+      singleLinks
         .filter(function(d) { return !d.source.level || d.source.level <= zoomLevel; })
         .attr('x1', function(d) { return d.source.x; })
         .attr('y1', function(d) { return d.source.y; })
         .attr('x2', function(d) { return d.target.x; })
         .attr('y2', function(d) { return d.target.y; });
+
+      doubleLinks
+        .filter(function(d) { return !d.source.level || d.source.level <= zoomLevel; })
+        .selectAll('line')
+          .attr('x1', function(d) { return d.source.x; })
+          .attr('y1', function(d) { return d.source.y; })
+          .attr('x2', function(d) { return d.target.x; })
+          .attr('y2', function(d) { return d.target.y; });
 
       nodes
         .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, zoomLevel ) + ')'; })
@@ -600,16 +648,18 @@
         zoom.scale(compositeZoom);
         zoom.translate([tx, ty]);
 
+        // TODO:  dry this
         if ( level > zoomLevel ) {
           var levelNodes = nodes.filter(function(d) { return d.level === level; }),
-              levelLinks = links.filter(function(d) { return d.source.level === level; });
+              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === level; }),
+              levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === level; });
 
           for ( var levelDepth = 0; levelDepth < 3; levelDepth++ ) {
             var ns = levelNodes.filter(function(d) { return d.levelDepth === levelDepth; });
             if ( ns.empty() )
               break;
 
-            levelLinks
+            levelSingleLinks
               .filter(function(d) { return d.source.levelDepth === levelDepth; })
               .attr('x1', function(d) { return d.target.x; })
               .attr('y1', function(d) { return d.target.y; })
@@ -620,6 +670,20 @@
               .duration(duration)
               .attr('x1', function(d) { return d.source.x; })
               .attr('y1', function(d) { return d.source.y; });
+
+            levelDoubleLinks
+              .filter(function(d) { return d.source.levelDepth === levelDepth; })
+              .selectAll('line')
+                .attr('x1', function(d) { return d.target.x; })
+                .attr('y1', function(d) { return d.target.y; })
+                .attr('x2', function(d) { return d.target.x; })
+                .attr('y2', function(d) { return d.target.y; })
+                .transition()
+                .delay(time)
+                .duration(duration)
+                .attr('x1', function(d) { return d.source.x; })
+                .attr('y1', function(d) { return d.source.y; });
+
 
             time += duration * 0.5
 
@@ -635,7 +699,8 @@
 
         } else {
           var levelNodes = nodes.filter(function(d) { return d.level === zoomLevel; }),
-              levelLinks = links.filter(function(d) { return d.source.level === zoomLevel; });
+              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === zoomLevel; }),
+              levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === zoomLevel; });
 
           for ( var levelDepth = 3; levelDepth >= 0; levelDepth-- ) {
             var ns = levelNodes.filter(function(d) { return d.levelDepth === levelDepth; });
@@ -650,7 +715,7 @@
 
             time += duration * 0.5
 
-            levelLinks
+            levelSingleLinks
               .filter(function(d) { return d.source.levelDepth === levelDepth; })
               .attr('x1', function(d) { return d.source.x; })
               .attr('y1', function(d) { return d.source.y; })
@@ -661,6 +726,19 @@
               .duration(duration)
               .attr('x1', function(d) { return d.target.x; })
               .attr('y1', function(d) { return d.target.y; });
+
+            levelDoubleLinks
+              .filter(function(d) { return d.source.levelDepth === levelDepth; })
+              .selectAll('line')
+                .attr('x1', function(d) { return d.source.x; })
+                .attr('y1', function(d) { return d.source.y; })
+                .attr('x2', function(d) { return d.target.x; })
+                .attr('y2', function(d) { return d.target.y; })
+                .transition()
+                .delay(time)
+                .duration(duration)
+                .attr('x1', function(d) { return d.target.x; })
+                .attr('y1', function(d) { return d.target.y; });
 
             time += duration
           }
@@ -701,36 +779,72 @@
 
         var nodeTypes = [
           {
-            name: 'label'
+            name: 'label',
+            scale: 1
           },
           {
             name: 'black-square',
             container: 'square',
+            scale: 1
           },
           {
             name: 'blue-square',
-            container: 'square'
+            container: 'square',
+            scale: 1
           },
           {
             name: 'blue-circle',
-            container: 'circle'
+            container: 'circle',
+            scale: 1
           },
           {
             name: 'red-circle',
-            container: 'circle'
+            container: 'circle',
+            scale: 1
           },
           {
             name: 'yellow-circle',
-            container: 'circle'
+            container: 'circle',
+            scale: 1
           },
           {
             name: 'person',
-            img: 'http://png-4.findicons.com/files/icons/61/dragon_soft/128/user.png'
+            img: 'http://png-4.findicons.com/files/icons/61/dragon_soft/128/user.png',
+            scale: 1
           },
           {
             name: 'blue-person',
-            img: 'http://png-4.findicons.com/files/icons/61/dragon_soft/128/user.png',
-            container: 'square'
+            container: 'square',
+            scale: 1
+          },
+          {
+            name: 'level-1',
+            container: 'circle',
+            scale: 2.2
+          },
+          {
+            name: 'level-2',
+            container: 'circle',
+            img: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-32.png',
+            scale: 1.8
+          },
+          {
+            name: 'level-3',
+            img: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-32.png',
+            container: 'circle',
+            scale: 1.2
+          },
+          {
+            name: 'level-4',
+            img: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-32.png',
+            container: 'circle',
+            scale: 1
+          },
+          {
+            name: 'level-5',
+            img: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-32.png',
+            container: 'circle',
+            scale: 0.6
           }
         ];
 

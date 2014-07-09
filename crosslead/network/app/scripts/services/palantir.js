@@ -119,8 +119,8 @@ angular.module('clNetwork')
       }
 
       function executives(transform, metadata, data) {
-        if ( isExecutive(data) ) {
-          if ( data.position.match( /chairman of the board of directors/i ) )
+        if ( isExecutive(data) && data.position ) {
+          if ( data && data.position.match( /chairman of the board of directors/i ) )
             metadata.chairman = data;
           else if ( data.position.match( /ceo/i ) )
             metadata.ceo = data;
@@ -160,7 +160,7 @@ angular.module('clNetwork')
         for ( c = 0; d.parent && c < 10; c++ ) {
           d = parentOf(metadata, d);
         }
-        data.depth = c;
+        data.depth = data.type === 'label' ? c-1 : c;
       }
 
       function setType(transform, metadata, data) {
@@ -220,6 +220,19 @@ angular.module('clNetwork')
       }
 
       function setLevel(transform, metadata, data) {
+        if ( data.type === 'label' ) {
+          var d = parentOf(metadata, data);
+          if ( d ) {
+            data.level = d.level;
+            return;
+          }
+        }
+
+        if ( data.type === 'level-5' ) {
+          data.level = 2;
+          return;
+        }
+
         switch ( data.depth ) {
         case 0:
         case 1:

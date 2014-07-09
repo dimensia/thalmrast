@@ -6693,7 +6693,7 @@ button.close {
   }
 }
 network svg {
-  background: #fff;
+  background: #ccc;
 }
 network .overlay {
   fill: none;
@@ -6702,10 +6702,17 @@ network .overlay {
 network text {
   font-size: 12px;
 }
-network .link {
-  stroke: #666;
+network g.link .outer {
+  stroke: #000;
+  stroke-width: 4px;
+}
+network g.link .inner {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+network line.link {
+  stroke: #333;
   stroke-width: 1.5px;
-  stroke-opacity: .6;
 }
 network .node {
   stroke: #000;
@@ -6717,9 +6724,10 @@ network .node text {
   stroke-width: 0.5px;
 }
 network .node text.label {
-  font-size: 14px;
-  text-transform: uppercase;
-  stroke: purple;
+  font-size: 18px;
+  stroke: #1a5fff;
+  fill: #1a5fff;
+  stroke-width: 0.5px;
 }
 network .black-square {
   fill: #000;
@@ -6741,6 +6749,21 @@ network .red-circle {
 }
 network .red-circle.img {
   stroke: #ff0000;
+}
+network .level-1 {
+  fill: #fff;
+}
+network .level-2 {
+  fill: #fff;
+}
+network .level-3 {
+  fill: #fff;
+}
+network .level-4 {
+  fill: #fff;
+}
+network .level-5 {
+  fill: #fff;
 }
 network .selection, network .selected {
   fill: none;
@@ -6780,6 +6803,7 @@ body {
 }
 .networkContainer .help, .networkContainer .editor {
   background: #fff;
+  border-radius: 4px;
   width: 400px;
   min-height: 218px;
   padding: 8px;
