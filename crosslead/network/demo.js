@@ -31,6 +31,7 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
       }
 
       $scope.help = false;
+      $scope.edit = false;
 
       $scope.selected = null;
       $scope.type = null;

@@ -18,10 +18,11 @@
      <button class="btn btn-success overlay zoom" ng-click="zoomOut()"><i class="fa fa-minus"></i></button>
      <button class="btn btn-success overlay zoom" ng-click="zoomIn()"><i class="fa fa-plus"></i></button>
      <button class="btn {{ help ? 'btn-success' : '' }} overlay helpBtn" ng-click="help=!help">Help</button>
+     <button class="btn overlay editBtn" ng-click="edit=!edit">{{ edit ? 'Edit' : 'View' }}</button>
     </div>
 
     <div class="panes">
-     <div class="editor" ng-show="selected">
+     <div class="editor" ng-show="selected && edit">
       <div class="header">Selected Node</div>
       <div>
        <div>
@@ -47,6 +48,45 @@
        <div class="buttons" ng-show="type !== 'label'">
         <button class="btn btn-success btn-xs" ng-click="addNode()">Add Node</button>
         <button class="btn btn-danger btn-xs" ng-click="removeNode()">Remove Node</button>
+       </div>
+      </div>
+     </div>
+
+     <div class="card" ng-show="selected && !edit">
+      <div class="header">{{ selected.name }}</div>
+      <img ng-show="selected.img" ng-src="{{selected.img}}">
+      <div>
+       <div>
+        <label>Position</label>
+        <div class="field">{{ selected.position }}</div>
+       </div>
+       <div>
+        <label>Profession</label>
+        <div class="field">{{ selected.profession }}</div>
+       </div>
+       <div>
+        <label>Company</label>
+        <div class="field">{{ selected.company }}</div>
+       </div>
+       <div>
+        <label>Business Unit</label>
+        <div class="field">{{ selected.businessUnit }}</div>
+       </div>
+       <div>
+        <label>Department</label>
+        <div class="field">{{ selected.department }}</div>
+       </div>
+       <div>
+        <label>Group</label>
+        <div class="field">{{ selected.employeeGroup }}</div>
+       </div>
+       <div>
+        <label>Hire Date</label>
+        <div class="field">{{ selected.hireDate }}</div>
+       </div>
+       <div>
+        <label>Location</label>
+        <div class="field">{{ selected.location }}</div>
        </div>
       </div>
      </div>

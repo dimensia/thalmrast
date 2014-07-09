@@ -6777,6 +6777,10 @@ body {
   background: #eee;
 }
 
+button.btn:focus, button.btn:active:focus {
+  outline: none;
+}
+
 .networkContainer {
   position: relative;
   margin: 8px 8px 0;
@@ -6801,7 +6805,7 @@ body {
   bottom: 8px;
   right: 0px;
 }
-.networkContainer .help, .networkContainer .editor {
+.networkContainer .help, .networkContainer .editor, .networkContainer .card {
   background: #fff;
   border-radius: 4px;
   width: 400px;
@@ -6809,26 +6813,34 @@ body {
   padding: 8px;
   margin: 8px 8px 0 0;
 }
-.networkContainer .help .header, .networkContainer .editor .header {
+.networkContainer .help .header, .networkContainer .editor .header, .networkContainer .card .header {
   border-bottom: 1px solid #000;
   margin-bottom: 8px;
 }
-.networkContainer .help label, .networkContainer .editor label {
+.networkContainer .help label, .networkContainer .editor label, .networkContainer .card label {
   clear: left;
   float: left;
 }
-.networkContainer .help .field, .networkContainer .editor .field {
+.networkContainer .help .field, .networkContainer .editor .field, .networkContainer .card .field {
   margin: 8px 0 0 100px;
 }
-.networkContainer .help .field input, .networkContainer .editor .field input {
+.networkContainer .help .field input, .networkContainer .editor .field input, .networkContainer .card .field input {
   width: 100%;
 }
-.networkContainer .help .buttons, .networkContainer .editor .buttons {
+.networkContainer .help .buttons, .networkContainer .editor .buttons, .networkContainer .card .buttons {
   margin-top: 8px;
   clear: both;
 }
+.networkContainer .card {
+  width: 500px;
+}
+.networkContainer .card img {
+  float: right;
+  margin: 0 0 8px 8px;
+  border: 1px solid #000;
+}
 
-.networkContainer, .editor, .help {
+.networkContainer, .editor, .help, .card {
   border: 1px solid #000;
   box-shadow: 2px 2px 3px #ccc;
 }
