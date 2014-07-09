@@ -251,6 +251,32 @@
       return !d.level || d.level <= level ? baseNodeScale(d) : 0;
     }
 
+    function zoomToFit(level) {
+      var visibleMembers = members.filter(function(d) { return d.level <= level; }),
+
+          // TODO:  rather than return d.x, d.y ... figure out the bounding box for the node then get rid of the +150/+150/-200/-100 factors below
+          xExtent = d3.extent(visibleMembers, function(d) { return d.x; }),
+          yExtent = d3.extent(visibleMembers, function(d) { return d.y; }),
+
+          $baseSvg = $(baseSvg[0][0]),
+
+          graphWidth = xExtent[1] - xExtent[0] + 200,
+          graphHeight = yExtent[1] - yExtent[0] + 200,
+
+          xZoom = $baseSvg.width() / graphWidth,
+          yZoom = $baseSvg.height() / graphHeight,
+
+          compositeZoom = Math.min( xZoom, yZoom ),
+
+          tx = -( xExtent[0] - 100 ) * compositeZoom,
+          ty = -( yExtent[0] - 100 ) * compositeZoom;
+
+      tx += Math.max( 0, ( $baseSvg.width() - graphWidth * compositeZoom ) / 2 );
+
+      zoom.scale(compositeZoom);
+      zoom.translate([tx, ty]);
+    }
+
     var baseSvg = d3.select(networkEl)
       .append('svg')
         .attr('width', width )
@@ -319,11 +345,11 @@
     }
     force.stop();
 
-    setTimeout(function() {
-      for ( var i = 100; i > 0; i-- ) {
-        force.tick();
-      }
-    }, 10);
+    //setTimeout(function() {
+      //for ( var i = 100; i > 0; i-- ) {
+        //force.tick();
+      //}
+    //}, 10);
 
 
     //
@@ -524,12 +550,18 @@
         }); 
       }
 
-      force.start();
+      if ( members.some(function(d) { return d.x === undefined; }) ) {
+        force.start();
+      } else {
+        tick();
+      }
     }
 
     sync();
+    zoomToFit(zoomLevel);
+    svg.attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
 
-    force.on('tick', function() {
+    function tick() {
       singleLinks
         .filter(function(d) { return !d.source.level || d.source.level <= zoomLevel; })
         .attr('x1', function(d) { return d.source.x; })
@@ -548,7 +580,9 @@
       nodes
         .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, zoomLevel ) + ')'; })
         .classed('show', function(d) { return !d.level || d.level <= zoomLevel });
-    });
+    }
+
+    force.on('tick', tick);
 
     /**
      * This object is the API external clients can use to manipulate the network graph.
@@ -624,29 +658,9 @@
         }
 
         var time = 0,
-            duration = 500,
+            duration = 500;
 
-            visibleMembers = members.filter(function(d) { return d.level <= level; }),
-
-            // TODO:  rather than return d.x, d.y ... figure out the bounding box for the node then get rid of the +150/+150/-200/-100 factors below
-            xExtent = d3.extent(visibleMembers, function(d) { return d.x; }),
-            yExtent = d3.extent(visibleMembers, function(d) { return d.y; }),
-
-            $baseSvg = $(baseSvg[0][0]),
-
-            graphWidth = xExtent[1] - xExtent[0] + 150,
-            graphHeight = yExtent[1] - yExtent[0] + 150,
-
-            xZoom = $baseSvg.width() / graphWidth,
-            yZoom = $baseSvg.height() / graphHeight,
-
-            compositeZoom = Math.min( xZoom, yZoom ),
-
-            tx = -( xExtent[0] - 200 ) * compositeZoom,
-            ty = -( yExtent[0] - 100 ) * compositeZoom;
-
-        zoom.scale(compositeZoom);
-        zoom.translate([tx, ty]);
+        zoomToFit(level);
 
         // TODO:  dry this
         if ( level > zoomLevel ) {
