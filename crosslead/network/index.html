@@ -12,13 +12,15 @@
 
   <div class="networkContainer" ng-style="{height: height+2+'px'}">
    <div ng-if="nodes">
-    <network width="100%" height="{{ height }}" on-load="onLoad(api)" on-click-node="onClickNode(data,i,selected)" nodes="nodes" zoom="zoom"></network>
+    <network width="100%" height="{{ height }}" on-load="onLoad(api)" on-click-node="onClickNode(data,i,selected)" nodes="nodes" zoom="zoom" overlays="overlays"></network>
 
     <div class="btnBar">
      <button class="btn btn-success overlay zoom" ng-click="zoomOut()"><i class="fa fa-minus"></i></button>
      <button class="btn btn-success overlay zoom" ng-click="zoomIn()"><i class="fa fa-plus"></i></button>
      <button class="btn {{ help ? 'btn-success' : '' }} overlay helpBtn" ng-click="help=!help">Help</button>
      <button class="btn overlay editBtn" ng-click="edit=!edit">{{ edit ? 'Edit' : 'View' }}</button>
+
+     <button class="btn {{ communication ? 'btn-success' : '' }} overlay communicationBtn" ng-click="toggleCommunication()">Communication</button>
     </div>
 
     <div class="panes">
@@ -112,7 +114,7 @@
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="test/client/mock/network/networkData.js" charset="utf-8"></script>
   <script src="app/scripts/directives/network.js" charset="utf-8"></script>
-  <script src="app/scripts/directives/network.js" charset="utf-8"></script>
+  <script src="app/scripts/directives/networkOverlay.js" charset="utf-8"></script>
   <script src="app/scripts/services/palantir.js" charset="utf-8"></script>
   <script src="demo.js" charset="utf-8"></script>
  </body>

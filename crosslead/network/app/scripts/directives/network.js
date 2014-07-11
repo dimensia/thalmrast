@@ -79,7 +79,8 @@
 
   function buildGraph(nodeTypes, networkEl, width, height, pixelWidth, members, scope) {
     var $networkEl = $(networkEl),
-        zoomLevel = scope.zoom;
+        zoomLevel = scope.zoom,
+        overlays = [];
 
     /**
      * This updates the DOM SVG "g" node with the DOM elements for the given data object node (member).
@@ -254,7 +255,7 @@
     function zoomToFit(level) {
       var visibleMembers = members.filter(function(d) { return d.level <= level; }),
 
-          // TODO:  rather than return d.x, d.y ... figure out the bounding box for the node then get rid of the +150/+150/-200/-100 factors below
+          // TODO:  rather than return d.x, d.y ... figure out the bounding box for the node then get rid of the +200/-100/etc. factors below
           xExtent = d3.extent(visibleMembers, function(d) { return d.x; }),
           yExtent = d3.extent(visibleMembers, function(d) { return d.y; }),
 
@@ -271,6 +272,7 @@
           tx = -( xExtent[0] - 100 ) * compositeZoom,
           ty = -( yExtent[0] - 100 ) * compositeZoom;
 
+      // center the graph horizontally
       tx += Math.max( 0, ( $baseSvg.width() - graphWidth * compositeZoom ) / 2 );
 
       zoom.scale(compositeZoom);
@@ -588,6 +590,7 @@
      * This object is the API external clients can use to manipulate the network graph.
      */
     var api = {
+      svg: svg,
       nodes: function() { return nodes; },
       force: force,
 
@@ -764,6 +767,21 @@
           .attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
 
         zoomLevel = level;
+      },
+
+      /**
+       * Applies overlays to the graph.
+       */
+      overlays: function(overlaysArr) {
+        overlays.forEach(function(overlay) {
+          overlay.deactivate(api);
+        });
+
+        overlays = overlaysArr || [];
+
+        overlays.forEach(function(overlay) {
+          overlay.activate(api);
+        });
       }
     }
 
@@ -889,7 +907,8 @@
             onLoad: '&',
             onClickNode: '&',
             nodes: '=',
-            zoom: '='
+            zoom: '=',
+            overlays: '='
           },
           link: function(scope, element) {
             var width = scope.width,
@@ -906,6 +925,10 @@
 
             scope.$watch('zoom', function(nv) {
               api.zoom(nv);
+            });
+
+            scope.$watch('overlays', function(nv) {
+              api.overlays(nv);
             });
           }
         };

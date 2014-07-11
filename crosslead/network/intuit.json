@@ -3366,7 +3366,8 @@
         "y": 948.7346424803234,
         "px": -271.50839061669126,
         "py": 948.7346424803234,
-        "fixed": 1
+        "fixed": 1,
+        "communications": 7
     },
     {
         "businessUnit": "QuickBase",
@@ -4992,7 +4993,8 @@
         "y": 245.44884915834564,
         "px": 282.9436370523408,
         "py": 245.44884915834564,
-        "fixed": 1
+        "fixed": 1,
+        "communications": 6
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -6510,7 +6512,8 @@
         "y": 695.4038401281672,
         "px": 708.7111931792497,
         "py": 695.4038401281672,
-        "fixed": true
+        "fixed": true,
+        "communications": 8
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/laura_fennell_lg.jpg",
@@ -6570,7 +6573,8 @@
         "y": 1368.5569608290662,
         "px": 693.5005644281803,
         "py": 1368.5569608290662,
-        "fixed": 1
+        "fixed": 1,
+        "communications": 2
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/kris_halvorsen_lg.jpg",
@@ -6600,7 +6604,8 @@
         "y": 608.7715436105166,
         "px": 1530.8261997014074,
         "py": 608.7715436105166,
-        "fixed": true
+        "fixed": true,
+        "communications": 6
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/tayloe_stansbury_lg.jpg",
@@ -6630,7 +6635,8 @@
         "y": 755.7406132641518,
         "px": 1286.5545832525509,
         "py": 755.7406132641518,
-        "fixed": 1
+        "fixed": 1,
+        "communications": 3
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/noelle_eder_lg.jpg",

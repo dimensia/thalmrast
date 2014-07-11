@@ -6800,6 +6800,9 @@ button.btn:focus, button.btn:active:focus {
 .networkContainer .helpBtn {
   margin-left: 32px;
 }
+.networkContainer .communicationBtn {
+  margin-left: 32px;
+}
 .networkContainer .panes {
   position: absolute;
   bottom: 8px;

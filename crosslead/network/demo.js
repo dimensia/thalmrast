@@ -1,7 +1,7 @@
 
 angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
-  .controller( 'NetworkDemoCtrl', ['$scope', 'networkNodeTypes', 'networkData', 'palantir',
-    function($scope, networkNodeTypes, networkData, palantir) {
+  .controller( 'NetworkDemoCtrl', ['$scope', 'networkNodeTypes', 'overlays', 'networkData', 'palantir',
+    function($scope, networkNodeTypes, overlays, networkData, palantir) {
       $scope.height = Math.round( $(window).height() - 20 );
 
       $scope.networkNodeTypes = networkNodeTypes;
@@ -32,6 +32,7 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
 
       $scope.help = false;
       $scope.edit = false;
+      $scope.communication = false;
 
       $scope.selected = null;
       $scope.type = null;
@@ -72,7 +73,7 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
         }
       });
 
-      $scope.$watch( 'selected.scale', function( scale ) {
+      $scope.$watch( 'selected.scale', function(scale) {
         if ( $scope.selected ) {
           //$scope.selected.scale = parseFloat(scale);
           $scope.api.redraw($scope.selected);
@@ -80,7 +81,7 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
         }
       });
 
-      $scope.$watch( 'selected.fixed', function( nv ) {
+      $scope.$watch( 'selected.fixed', function(nv) {
         if ( $scope.selected ) {
           $scope.selected.fixed = nv;
 
@@ -89,6 +90,13 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
           }
         }
       });
+
+      $scope.toggleCommunication = function() {
+        $scope.communication = !$scope.communication;
+        $scope.overlays = $scope.communication ?
+          [ overlays.byName.communication ] :
+          [];
+      }
 
       $scope.fixAll = function() {
         $scope.api.nodes().each(function(d) {
