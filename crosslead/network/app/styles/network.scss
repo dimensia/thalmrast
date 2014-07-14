@@ -39,6 +39,10 @@ network {
     //stroke-opacity: .6;
   }
 
+  .commLink {
+    stroke-width: 1.5px;
+  }
+
 
   // Node styles
 
@@ -59,6 +63,10 @@ network {
       stroke: #1a5fff;
       fill: #1a5fff;
       stroke-width: 0.5px;
+    }
+
+    circle {
+      filter: url(#glow);
     }
   }
 

@@ -6714,6 +6714,9 @@ network line.link {
   stroke: #333;
   stroke-width: 1.5px;
 }
+network .commLink {
+  stroke-width: 1.5px;
+}
 network .node {
   stroke: #000;
   stroke-width: 1.5px;
@@ -6728,6 +6731,9 @@ network .node text.label {
   stroke: #1a5fff;
   fill: #1a5fff;
   stroke-width: 0.5px;
+}
+network .node circle {
+  filter: url(#glow);
 }
 network .black-square {
   fill: #000;

@@ -269,6 +269,23 @@ angular.module('clNetwork')
         }
       }
 
+      function mostCommunicated(transform, metadata, data) {
+        var mc = data.mostCommunicated;
+        if ( mc ) {
+          for ( var i=0, len=mc.length; i<len; i++ ) {
+            var name = mc[i];
+
+            if (angular.isString(name)) {
+              var node = findByName(metadata, name);
+
+              if ( node ) {
+                mc[i] = node.id;
+              }
+            }
+          }
+        }
+      }
+
       var transforms = [
         { func: rename,        field: 'Business Unit',    rename: 'businessUnit' },
         { func: rename,        field: 'Company - Name',   rename: 'company' },
@@ -295,7 +312,8 @@ angular.module('clNetwork')
         { func: setType,       field: 'type' },
         { func: setLevel },
         { func: labels },
-        { func: setLevelDepth }//,
+        { func: setLevelDepth },
+        { func: mostCommunicated }//,
         //{ func: setGrid }
       ];
 

@@ -18,7 +18,31 @@
     return -1;
   }
 
+  function addGlowFilter(to) {
 
+    var glow = to.append('filter')
+      .attr('id', 'glow')
+      .attr('x', '-20%')
+      .attr('y', '-20%')
+      .attr('height', '140%')
+      .attr('width', '140%');
+
+    glow.append('feGaussianBlur')
+      //.attr('in', 'SourceAlpha')
+      .attr('stdDeviation', 3);
+
+    //glow.append('feOffset')
+      //.attr('dx', 0)
+      //.attr('dy', 0)
+      //.attr('result', 'offsetblur');
+
+    //var merge = glow.append('feMerge');
+    //merge.append('feMergeNode');
+    //merge.append('feMergeNode')
+      //.attr('in', 'SourceGraphic');
+
+    return glow;
+  }
 
   /**
    * This function creates nodes and links for the D3 graph out of member data.
@@ -72,6 +96,7 @@
 
     return {
       nodes: nodes,
+      nodesById: nodesById,
       links: links,
       nextId: maxId + 1
     };
@@ -79,7 +104,33 @@
 
   function buildGraph(nodeTypes, networkEl, width, height, pixelWidth, members, scope) {
     var $networkEl = $(networkEl),
-        zoomLevel = scope.zoom,
+        network = {
+          zoomLevel: scope.zoom,
+          expandLinks: function(sel, time, duration) {
+            sel
+              .attr('x1', function(d) { return d.target.x; })
+              .attr('y1', function(d) { return d.target.y; })
+              .attr('x2', function(d) { return d.target.x; })
+              .attr('y2', function(d) { return d.target.y; })
+              .transition()
+              .delay(time)
+              .duration(duration)
+              .attr('x1', function(d) { return d.source.x; })
+              .attr('y1', function(d) { return d.source.y; });
+          },
+          collapseLinks: function(sel, time, duration) {
+            sel
+              .attr('x1', function(d) { return d.source.x; })
+              .attr('y1', function(d) { return d.source.y; })
+              .attr('x2', function(d) { return d.target.x; })
+              .attr('y2', function(d) { return d.target.y; })
+              .transition()
+              .delay(time)
+              .duration(duration)
+              .attr('x1', function(d) { return d.target.x; })
+              .attr('y1', function(d) { return d.target.y; });
+          }
+        },
         overlays = [];
 
     /**
@@ -283,6 +334,8 @@
       .append('svg')
         .attr('width', width )
         .attr('height', height);
+
+    addGlowFilter(baseSvg);
 
     var defs = baseSvg.append('defs');
 
@@ -560,19 +613,19 @@
     }
 
     sync();
-    zoomToFit(zoomLevel);
+    zoomToFit(network.zoomLevel);
     svg.attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
 
     function tick() {
       singleLinks
-        .filter(function(d) { return !d.source.level || d.source.level <= zoomLevel; })
+        .filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
         .attr('x1', function(d) { return d.source.x; })
         .attr('y1', function(d) { return d.source.y; })
         .attr('x2', function(d) { return d.target.x; })
         .attr('y2', function(d) { return d.target.y; });
 
       doubleLinks
-        .filter(function(d) { return !d.source.level || d.source.level <= zoomLevel; })
+        .filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
         .selectAll('line')
           .attr('x1', function(d) { return d.source.x; })
           .attr('y1', function(d) { return d.source.y; })
@@ -580,8 +633,8 @@
           .attr('y2', function(d) { return d.target.y; });
 
       nodes
-        .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, zoomLevel ) + ')'; })
-        .classed('show', function(d) { return !d.level || d.level <= zoomLevel });
+        .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, network.zoomLevel ) + ')'; })
+        .classed('show', function(d) { return !d.level || d.level <= network.zoomLevel });
     }
 
     force.on('tick', tick);
@@ -589,7 +642,9 @@
     /**
      * This object is the API external clients can use to manipulate the network graph.
      */
-    var api = {
+    $.extend( network, {
+      data: members,
+      dataById: graph.nodesById,
       svg: svg,
       nodes: function() { return nodes; },
       force: force,
@@ -656,7 +711,7 @@
        * Sets the zoom level for the graph.
        */
       zoom: function(level) {
-        if ( level === zoomLevel ) {
+        if ( level === network.zoomLevel ) {
           return;
         }
 
@@ -665,8 +720,7 @@
 
         zoomToFit(level);
 
-        // TODO:  dry this
-        if ( level > zoomLevel ) {
+        if ( level > network.zoomLevel ) {
           var levelNodes = nodes.filter(function(d) { return d.level === level; }),
               levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === level; }),
               levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === level; });
@@ -676,31 +730,8 @@
             if ( ns.empty() )
               break;
 
-            levelSingleLinks
-              .filter(function(d) { return d.source.levelDepth === levelDepth; })
-              .attr('x1', function(d) { return d.target.x; })
-              .attr('y1', function(d) { return d.target.y; })
-              .attr('x2', function(d) { return d.target.x; })
-              .attr('y2', function(d) { return d.target.y; })
-              .transition()
-              .delay(time)
-              .duration(duration)
-              .attr('x1', function(d) { return d.source.x; })
-              .attr('y1', function(d) { return d.source.y; });
-
-            levelDoubleLinks
-              .filter(function(d) { return d.source.levelDepth === levelDepth; })
-              .selectAll('line')
-                .attr('x1', function(d) { return d.target.x; })
-                .attr('y1', function(d) { return d.target.y; })
-                .attr('x2', function(d) { return d.target.x; })
-                .attr('y2', function(d) { return d.target.y; })
-                .transition()
-                .delay(time)
-                .duration(duration)
-                .attr('x1', function(d) { return d.source.x; })
-                .attr('y1', function(d) { return d.source.y; });
-
+            network.expandLinks(levelSingleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }), time, duration);
+            network.expandLinks(levelDoubleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }).selectAll('line'), time, duration);
 
             time += duration * 0.5
 
@@ -715,9 +746,9 @@
           }
 
         } else {
-          var levelNodes = nodes.filter(function(d) { return d.level === zoomLevel; }),
-              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === zoomLevel; }),
-              levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === zoomLevel; });
+          var levelNodes = nodes.filter(function(d) { return d.level === network.zoomLevel; }),
+              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === network.zoomLevel; }),
+              levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === network.zoomLevel; });
 
           for ( var levelDepth = 3; levelDepth >= 0; levelDepth-- ) {
             var ns = levelNodes.filter(function(d) { return d.levelDepth === levelDepth; });
@@ -732,30 +763,8 @@
 
             time += duration * 0.5
 
-            levelSingleLinks
-              .filter(function(d) { return d.source.levelDepth === levelDepth; })
-              .attr('x1', function(d) { return d.source.x; })
-              .attr('y1', function(d) { return d.source.y; })
-              .attr('x2', function(d) { return d.target.x; })
-              .attr('y2', function(d) { return d.target.y; })
-              .transition()
-              .delay(time)
-              .duration(duration)
-              .attr('x1', function(d) { return d.target.x; })
-              .attr('y1', function(d) { return d.target.y; });
-
-            levelDoubleLinks
-              .filter(function(d) { return d.source.levelDepth === levelDepth; })
-              .selectAll('line')
-                .attr('x1', function(d) { return d.source.x; })
-                .attr('y1', function(d) { return d.source.y; })
-                .attr('x2', function(d) { return d.target.x; })
-                .attr('y2', function(d) { return d.target.y; })
-                .transition()
-                .delay(time)
-                .duration(duration)
-                .attr('x1', function(d) { return d.target.x; })
-                .attr('y1', function(d) { return d.target.y; });
+            network.collapseLinks(levelSingleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }), time, duration);
+            network.collapseLinks(levelDoubleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }).selectAll('line'), time, duration);
 
             time += duration
           }
@@ -766,7 +775,11 @@
           .duration(time+duration)
           .attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
 
-        zoomLevel = level;
+        overlays.forEach(function(overlay) {
+          overlay.zoom(level);
+        });
+
+        network.zoomLevel = level;
       },
 
       /**
@@ -774,24 +787,28 @@
        */
       overlays: function(overlaysArr) {
         overlays.forEach(function(overlay) {
-          overlay.deactivate(api);
+          overlay.deactivate();
         });
 
         overlays = overlaysArr || [];
 
+        for ( var i=0, len=overlays.length; i<len; i++ ) {
+          overlays[i] = new overlays[i].cls(network);
+        }
+
         overlays.forEach(function(overlay) {
-          overlay.activate(api);
+          overlay.activate();
         });
       }
-    }
+    });
 
     if (scope.onLoad) {
       scope.onLoad({
-        api: api
+        api: network
       });
     }
 
-    return api;
+    return network;
   }
 
   angular.module('clNetwork', [])

@@ -27,7 +27,12 @@
         "y": 557.109304681073,
         "px": 888.3178733036576,
         "py": 557.109304681073,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            232,
+            228
+        ],
+        "communications": 30
     },
     {
         "businessUnit": "Finance Operations",
@@ -955,7 +960,13 @@
         "y": 1259.9729098261519,
         "px": -103.90812513742212,
         "py": 1259.9729098261519,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            153,
+            256,
+            36
+        ],
+        "communications": 15
     },
     {
         "businessUnit": "Legal",
@@ -1011,7 +1022,13 @@
         "y": 1307.517259458955,
         "px": -94.73598576846828,
         "py": 1307.517259458955,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            153,
+            256,
+            34
+        ],
+        "communications": 30
     },
     {
         "businessUnit": "Legal",
@@ -2105,7 +2122,12 @@
         "y": 1046.5072080572284,
         "px": 56.34440683749082,
         "py": 1046.5072080572284,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            308,
+            153,
+            233
+        ]
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -3366,8 +3388,7 @@
         "y": 948.7346424803234,
         "px": -271.50839061669126,
         "py": 948.7346424803234,
-        "fixed": 1,
-        "communications": 7
+        "fixed": 1
     },
     {
         "businessUnit": "QuickBase",
@@ -4264,7 +4285,12 @@
         "y": 1102.2183515729175,
         "px": -19.621879519528903,
         "py": 1102.2183515729175,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            308,
+            153,
+            233
+        ]
     },
     {
         "businessUnit": "Legal",
@@ -4292,7 +4318,13 @@
         "y": 1188.3317208431633,
         "px": -96.61107520206536,
         "py": 1188.3317208431633,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            308,
+            154,
+            233
+        ],
+        "communications": 105
     },
     {
         "businessUnit": "Legal",
@@ -4320,7 +4352,13 @@
         "y": 1135.2890682591037,
         "px": -94.37937868498193,
         "py": 1135.2890682591037,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            308,
+            153,
+            233
+        ],
+        "communications": 15
     },
     {
         "businessUnit": "Channel Sales Telesales",
@@ -4993,8 +5031,7 @@
         "y": 245.44884915834564,
         "px": 282.9436370523408,
         "py": 245.44884915834564,
-        "fixed": 1,
-        "communications": 6
+        "fixed": 1
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -5106,7 +5143,8 @@
         "y": 1283.8582556294828,
         "px": 367.65110795120574,
         "py": 1283.8582556294828,
-        "fixed": 1
+        "fixed": 1,
+        "communications": 15
     },
     {
         "businessUnit": "Finance Operations",
@@ -6398,7 +6436,12 @@
         "y": 459.5364710832238,
         "px": 1033.7763526074232,
         "py": 459.5364710832238,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            232,
+            1
+        ],
+        "communications": 15
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -6513,7 +6556,11 @@
         "px": 708.7111931792497,
         "py": 695.4038401281672,
         "fixed": true,
-        "communications": 8
+        "mostCommunicated": [
+            233,
+            1
+        ],
+        "communications": 45
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/laura_fennell_lg.jpg",
@@ -6543,7 +6590,13 @@
         "y": 990.463784830051,
         "px": 267.85114406197283,
         "py": 990.463784830051,
-        "fixed": true
+        "fixed": true,
+        "mostCommunicated": [
+            238,
+            232,
+            259
+        ],
+        "communications": 105
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/andrew_westergren_lg.jpg",
@@ -6573,8 +6626,7 @@
         "y": 1368.5569608290662,
         "px": 693.5005644281803,
         "py": 1368.5569608290662,
-        "fixed": 1,
-        "communications": 2
+        "fixed": 1
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/kris_halvorsen_lg.jpg",
@@ -6604,8 +6656,7 @@
         "y": 608.7715436105166,
         "px": 1530.8261997014074,
         "py": 608.7715436105166,
-        "fixed": true,
-        "communications": 6
+        "fixed": true
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/tayloe_stansbury_lg.jpg",
@@ -6635,8 +6686,7 @@
         "y": 755.7406132641518,
         "px": 1286.5545832525509,
         "py": 755.7406132641518,
-        "fixed": 1,
-        "communications": 3
+        "fixed": 1
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/noelle_eder_lg.jpg",
@@ -6696,7 +6746,8 @@
         "y": 1068.1364801162727,
         "px": 708.3900494479539,
         "py": 1068.1364801162727,
-        "fixed": 1
+        "fixed": 1,
+        "communications": 15
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/E_Dunn_Formal_2012.jpg",
@@ -7226,7 +7277,13 @@
         "y": 1283.9726407622616,
         "px": 9.643604429304773,
         "py": 1283.9726407622616,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            153,
+            36,
+            233
+        ],
+        "communications": 30
     },
     {
         "businessUnit": "Legal",
@@ -7312,7 +7369,13 @@
         "y": 1243.793401602414,
         "px": 284.7030273362441,
         "py": 1243.793401602414,
-        "fixed": 1
+        "fixed": 1,
+        "mostCommunicated": [
+            233,
+            182,
+            153
+        ],
+        "communications": 15
     },
     {
         "businessUnit": "Corp Mktg",
@@ -8709,7 +8772,8 @@
         "y": 1161.2334197395055,
         "px": -7.370158166052036,
         "py": 1161.2334197395055,
-        "fixed": 1
+        "fixed": 1,
+        "communications": 60
     },
     {
         "businessUnit": "EBS 2",
