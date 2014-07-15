@@ -1,0 +1,238 @@
+
+@import "bootstrap";
+
+/* Our custom imports */
+@import 'variables';
+// TODO: define own mixins once we no longer take Bootstrap as a dependency
+
+//
+// All styling for the network directive are here
+//
+
+network {
+  svg {
+    background: $network-color-bg;
+    @include gradient-radial(rgba(255,255,255,.4),transparent);
+  }
+
+  .overlay {
+    fill: none;
+    pointer-events: all;
+  }
+
+  text {
+    font-size: 12px;
+  }
+
+  g.link {
+    .outer {
+      //stroke: #000;
+      //stroke-width: 4px;
+      //stroke-opacity: .6;
+    }
+
+    .inner {
+      stroke: #fff;
+      stroke-width: 2px;
+      //stroke-opacity: .6;
+    }
+  }
+
+  line.link {
+    stroke: #fff;
+    stroke-width: 1.5px;
+    //stroke-opacity: .6;
+  }
+
+  line.link-bg {
+    filter: url(#glow);
+    stroke: #fff;
+    stroke-width: 2px;
+  }
+
+  .commLink {
+    stroke-width: 1.5px;
+  }
+
+
+  // Node styles
+
+  .node {
+    //stroke: #000;
+    //stroke-width: 1.5px;
+
+    text {
+      stroke: $network-color-text;
+      fill: $network-color-text;
+      stroke-width: 0.5px;
+    }
+
+    text.label {
+      display: none;
+      //text-transform: uppercase;
+      font-family: $network-font-family;
+      font-size: 18px;
+
+      stroke: $network-color-text;
+      fill: $network-color-text;
+      stroke-width: 0.5px;
+    }
+
+    circle {
+      //filter: blur(50px);
+      //filter: url(#glow);
+    }
+  }
+
+  .black-square {
+    fill: #000;
+  }
+
+  .blue-square, .blue-circle, .blue-person {
+    fill: #0000ff;
+  }
+  .blue-square.img, .blue-circle.img, .blue-person.img {
+    stroke: #0000ff;
+  }
+
+  .yellow-circle {
+    fill: #ffff00;
+  }
+  .yellow-circle.img {
+    stroke: #ffff00;
+  }
+  
+  .red-circle {
+    fill: #ff0000;
+  }
+  .red-circle.img {
+    stroke: #ff0000;
+  }
+
+  .level-1 {
+    fill: #fff;
+  }
+
+  .level-2 {
+    fill: #fff;
+  }
+
+  .level-3 {
+    fill: #fff;
+  }
+
+  .level-4 {
+    fill: #fff;
+  }
+
+  .level-5 {
+    fill: #fff;
+  }
+
+  // Selection styles
+
+  .selection, .selected {
+    fill: none;
+    stroke: #888;
+    stroke-width: 1.5px;
+    stroke-dasharray: 5,5;
+  }
+}
+
+
+//
+// This styling is specific to the UI overlaid on the network-map
+//
+
+body {
+  font-family: Oxygen, Helvetica, sans-serif;
+  background: #eee;
+}
+
+button.btn:focus, button.btn:active:focus {
+  outline: none;
+}
+
+.networkContainer {
+  position: relative;
+  margin: 8px 8px 0;
+
+  .btnBar {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+  }
+
+  button.overlay {
+    padding: 4px 9px;
+    height: 28px;
+  }
+
+  .zoom {
+    width: 32px;
+  }
+
+  .helpBtn {
+    margin-left: 32px;
+  }
+
+  .communicationBtn {
+    margin-left: 32px;
+  }
+
+  .panes {
+    position: absolute;
+    bottom: 8px;
+    right: 0px;
+  }
+
+  .help, .editor, .card {
+    filter: blur(5px);
+    background: #fff;
+    border-radius: 4px;
+    width: 400px;
+    min-height: 218px;
+    padding: 8px;
+    margin: 8px 8px 0 0;
+
+    .header {
+      border-bottom: 1px solid #000;
+      margin-bottom: 8px;
+    }
+
+    label {
+      clear: left;
+      float: left;
+    }
+
+    .field {
+      margin: 8px 0 0 100px;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .buttons {
+      margin-top: 8px;
+      clear: both;
+    }
+  }
+
+  .card {
+    width: 500px;
+
+    img {
+      float: right;
+      margin: 0 0 8px 8px;
+      border: 1px solid #000;
+    }
+  }
+}
+
+.networkContainer, .editor, .help, .card {
+  border: 1px solid #000;
+  box-shadow: 2px 2px 3px #ccc;
+}
+
+
