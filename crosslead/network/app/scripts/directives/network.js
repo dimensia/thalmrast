@@ -699,8 +699,9 @@
           return;
         }
 
-        var time = 0,
-            duration = 500;
+        var simultaneous = false, // true for desktop, false for iPad/slower devices ?
+            duration = 500,
+            time = simultaneous ? 0 : duration;
 
         zoomToFit(level);
 
@@ -756,7 +757,7 @@
 
         svg
           .transition()
-          .duration(time+duration)
+          .duration(simultaneous ? time : duration)
           .attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
 
         overlays.forEach(function(overlay) {
