@@ -15,6 +15,16 @@ network {
     @include gradient-radial(rgba(255,255,255,.4),transparent);
   }
 
+  #glowGrad {
+    stop:first-child {
+      stop-color:#ffffff;
+    }
+    stop:last-child {
+      stop-color:rgba(128,128,128,0);
+      stop-opacity:0;
+    }
+  }
+
   .overlay {
     fill: none;
     pointer-events: all;
@@ -69,18 +79,12 @@ network {
 
     text.label {
       display: none;
-      //text-transform: uppercase;
       font-family: $network-font-family;
       font-size: 18px;
 
       stroke: $network-color-text;
       fill: $network-color-text;
       stroke-width: 0.5px;
-    }
-
-    circle {
-      //filter: blur(50px);
-      //filter: url(#glow);
     }
   }
 

@@ -1,0 +1,18 @@
+<svg>
+  <filter id="glow" x="-17%" y="-17%" height="134%" width="134%">
+    <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+  </filter>
+  <radialGradient id="glowGrad">
+    <stop offset="50%"></stop>
+    <stop offset="100%"></stop>
+  </radialGradient>
+  <defs>
+    <clipPath id="circleImg">
+      <circle cx="0" cy="0" r="18"></circle>
+    </clipPath>
+    <clipPath id="squareImg">
+      <rect x="-18" y="-18" width="36" height="36" rx="4" ry="4"></rect>
+    </clipPath>
+    <circle id="glowCircle" filter="url(#glow)" r="20" cx="0" cy="0"></circle>
+  </defs>
+</svg>

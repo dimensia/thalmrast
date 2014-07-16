@@ -6699,6 +6699,13 @@ network svg {
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
   background-repeat: no-repeat;
 }
+network #glowGrad stop:first-child {
+  stop-color: #ffffff;
+}
+network #glowGrad stop:last-child {
+  stop-color: rgba(128, 128, 128, 0);
+  stop-opacity: 0;
+}
 network .overlay {
   fill: none;
   pointer-events: all;

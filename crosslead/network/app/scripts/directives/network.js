@@ -24,47 +24,6 @@
     return -1;
   }
 
-  function addGlowFilter(to) {
-
-    var glow = to.append('filter')
-      .attr('id', 'glow')
-      .attr('x', '-17%')
-      .attr('y', '-17%')
-      .attr('height', '134%')
-      .attr('width', '134%');
-
-    glow.append('feGaussianBlur')
-      //.attr('in', 'SourceAlpha')
-      .attr('stdDeviation', 2);
-
-    //glow.append('feOffset')
-      //.attr('dx', 0)
-      //.attr('dy', 0)
-      //.attr('result', 'offsetblur');
-
-    //var merge = glow.append('feMerge');
-    //merge.append('feMergeNode');
-    //merge.append('feMergeNode')
-      //.attr('in', 'SourceGraphic');
-
-    return glow;
-  }
-
-  function addRadialGradient(to) {
-    var rg = to.append('radialGradient')
-      .attr('id', 'glowGrad');
-
-    rg.append('stop')
-      .attr('offset', '50%')
-      .attr('stop-color', '#ffffff');
-
-    rg.append('stop')
-      .attr('offset', '100%')
-      .attr('stop-color', 'rgba(128,128,128,0)')
-
-    return rg;
-  }
-
   /**
    * This function creates nodes and links for the D3 graph out of member data.
    */
@@ -379,41 +338,10 @@
       zoom.translate([tx, ty]);
     }
 
-    var baseSvg = d3.select(networkEl)
-      .append('svg')
-        .attr('width', width )
-        .attr('height', height);
+    var baseSvg = d3.select('svg')
+      .attr('width', width )
+      .attr('height', height);
 
-    addGlowFilter(baseSvg);
-    addRadialGradient(baseSvg);
-
-    var defs = baseSvg.append('defs');
-
-    // clip path used for clipping profile images to a circle
-    defs.append('clipPath')
-      .attr('id','circleImg')
-      .append('circle')
-        .attr('cx',0)
-        .attr('cy',0)
-        .attr('r',18);
-
-    // clip path used for clipping profile images to a square
-    defs.append('clipPath')
-      .attr('id','squareImg')
-      .append('rect')
-        .attr('x', -18)
-        .attr('y', -18)
-        .attr('width', 36)
-        .attr('height', 36)
-        .attr('rx', 4)
-        .attr('ry', 4);
-
-    defs.append('circle')
-      .attr('id','glowCircle')
-      .attr('filter','url(#glow)')
-      .attr('r', 20)
-      .attr('cx', 0)
-      .attr('cy', 0);
 
     var zoomTranslate = [ 0, 0 ],
         zoomScale = 1,
@@ -976,6 +904,7 @@
       function(nodeTypes) {
         return {
           restrict: 'E',
+          templateUrl: 'app/views/network.html',
           scope: {
             height: '@',
             width: '@',
