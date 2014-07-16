@@ -1,13 +1,18 @@
 
 @import "bootstrap";
 
+/* Our custom imports */
+@import 'variables';
+// TODO: define own mixins once we no longer take Bootstrap as a dependency
+
 //
 // All styling for the network directive are here
 //
 
 network {
   svg {
-    background: #ccc;
+    background: $network-color-bg;
+    @include gradient-radial(rgba(255,255,255,.4),transparent);
   }
 
   .overlay {
@@ -21,8 +26,8 @@ network {
 
   g.link {
     .outer {
-      stroke: #000;
-      stroke-width: 4px;
+      //stroke: #000;
+      //stroke-width: 4px;
       //stroke-opacity: .6;
     }
 
@@ -34,9 +39,15 @@ network {
   }
 
   line.link {
-    stroke: #333;
+    stroke: #fff;
     stroke-width: 1.5px;
     //stroke-opacity: .6;
+  }
+
+  line.link-bg {
+    filter: url(#glow);
+    stroke: #fff;
+    stroke-width: 2px;
   }
 
   .commLink {
@@ -47,26 +58,29 @@ network {
   // Node styles
 
   .node {
-    stroke: #000;
-    stroke-width: 1.5px;
+    //stroke: #000;
+    //stroke-width: 1.5px;
 
     text {
-      fill: #000;
-      stroke: #000;
+      stroke: $network-color-text;
+      fill: $network-color-text;
       stroke-width: 0.5px;
     }
 
     text.label {
+      display: none;
       //text-transform: uppercase;
+      font-family: $network-font-family;
       font-size: 18px;
 
-      stroke: #1a5fff;
-      fill: #1a5fff;
+      stroke: $network-color-text;
+      fill: $network-color-text;
       stroke-width: 0.5px;
     }
 
     circle {
-      filter: url(#glow);
+      //filter: blur(50px);
+      //filter: url(#glow);
     }
   }
 
@@ -141,7 +155,6 @@ button.btn:focus, button.btn:active:focus {
 
 .networkContainer {
   position: relative;
-  margin: 8px 8px 0;
 
   .btnBar {
     position: absolute;
@@ -173,6 +186,7 @@ button.btn:focus, button.btn:active:focus {
   }
 
   .help, .editor, .card {
+    filter: blur(5px);
     background: #fff;
     border-radius: 4px;
     width: 400px;
@@ -215,7 +229,7 @@ button.btn:focus, button.btn:active:focus {
   }
 }
 
-.networkContainer, .editor, .help, .card {
+.editor, .help, .card {
   border: 1px solid #000;
   box-shadow: 2px 2px 3px #ccc;
 }

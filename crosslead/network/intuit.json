@@ -6750,7 +6750,8 @@
         "communications": 15
     },
     {
-        "img": "http://about.intuit.com/about_intuit/images/executives/E_Dunn_Formal_2012.jpg",
+        "imgBig": "http://about.intuit.com/about_intuit/images/executives/E_Dunn_Formal_2012.jpg",
+        "img": "http://a3.images.crunchbase.com/image/upload/c_pad,h_98,w_98/v1397181410/b2eaa9b5a6c446a4e7cb160bd8d4b587.jpg",
         "businessUnit": "Innov Merch Svcs",
         "company": "Innovative Merchant Solutions",
         "department": "Payments and Commerce Solutions",

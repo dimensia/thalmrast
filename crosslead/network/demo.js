@@ -2,7 +2,7 @@
 angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork'])
   .controller( 'NetworkDemoCtrl', ['$scope', 'networkNodeTypes', 'overlays', 'networkData', 'palantir',
     function($scope, networkNodeTypes, overlays, networkData, palantir) {
-      $scope.height = Math.round( $(window).height() - 20 );
+      $scope.height = Math.round( $(window).height() );
 
       $scope.networkNodeTypes = networkNodeTypes;
 

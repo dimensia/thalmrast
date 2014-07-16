@@ -6692,8 +6692,12 @@ button.close {
     display: none !important;
   }
 }
+/* Our custom imports */
 network svg {
-  background: #ccc;
+  background: #345c88;
+  background-image: -webkit-radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  background-repeat: no-repeat;
 }
 network .overlay {
   fill: none;
@@ -6702,38 +6706,34 @@ network .overlay {
 network text {
   font-size: 12px;
 }
-network g.link .outer {
-  stroke: #000;
-  stroke-width: 4px;
-}
 network g.link .inner {
   stroke: #fff;
   stroke-width: 2px;
 }
 network line.link {
-  stroke: #333;
+  stroke: #fff;
   stroke-width: 1.5px;
+}
+network line.link-bg {
+  filter: url(#glow);
+  stroke: #fff;
+  stroke-width: 2px;
 }
 network .commLink {
   stroke-width: 1.5px;
 }
-network .node {
-  stroke: #000;
-  stroke-width: 1.5px;
-}
 network .node text {
-  fill: #000;
-  stroke: #000;
+  stroke: rgba(255, 255, 255, 0.5);
+  fill: rgba(255, 255, 255, 0.5);
   stroke-width: 0.5px;
 }
 network .node text.label {
+  display: none;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
-  stroke: #1a5fff;
-  fill: #1a5fff;
+  stroke: rgba(255, 255, 255, 0.5);
+  fill: rgba(255, 255, 255, 0.5);
   stroke-width: 0.5px;
-}
-network .node circle {
-  filter: url(#glow);
 }
 network .black-square {
   fill: #000;
@@ -6789,7 +6789,6 @@ button.btn:focus, button.btn:active:focus {
 
 .networkContainer {
   position: relative;
-  margin: 8px 8px 0;
 }
 .networkContainer .btnBar {
   position: absolute;
@@ -6815,6 +6814,7 @@ button.btn:focus, button.btn:active:focus {
   right: 0px;
 }
 .networkContainer .help, .networkContainer .editor, .networkContainer .card {
+  filter: blur(5px);
   background: #fff;
   border-radius: 4px;
   width: 400px;
@@ -6849,7 +6849,7 @@ button.btn:focus, button.btn:active:focus {
   border: 1px solid #000;
 }
 
-.networkContainer, .editor, .help, .card {
+.editor, .help, .card {
   border: 1px solid #000;
   box-shadow: 2px 2px 3px #ccc;
 }

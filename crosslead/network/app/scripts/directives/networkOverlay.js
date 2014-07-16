@@ -56,6 +56,7 @@
         this.analyze();
       }
 
+
       var max = 0;
       network.nodes()
         .filter(function(d) {
@@ -65,11 +66,28 @@
           }
           return c;
         })
-        .transition()
-        .duration(1000)
-        .select('circle')
-          .attr('stroke', function(d) { return overlay.heatColors(d.communications/max); })
-          .attr('fill', function(d) { return overlay.heatColors(d.communications/max*0.7); });
+        .each(function(d) {
+          var sel = d3.select(this);
+
+          var rg = sel.append('radialGradient')
+            .attr('id', 'mcglow' + d.id)
+            .attr('class', 'mcglow');
+
+          rg.append('stop')
+            .attr('class', 'color')
+            .attr('offset', '50%')
+            .attr('stop-color', '#ffffff');
+
+          rg.append('stop')
+            .attr('offset', '100%')
+            .attr('stop-color', 'rgba(128,128,128,0)');
+
+          sel.select('circle').attr('fill', 'url(#mcglow' + d.id + ')' );
+        })
+        .select('.color')
+          .transition()
+          .duration(1000)
+          .attr('stop-color', function(d) { return overlay.heatColors(d.communications/max); })
 
       network.nodes()
         .filter(function(d) { return !d.communications; })
@@ -101,9 +119,8 @@
         .transition()
         .duration(1000)
         .attr('opacity', 1)
-        .select('circle')
-          .attr('stroke', function(d) { return '#000'; })
-          .attr('fill', function(d) { return '#fff'; });
+        .select('.color')
+          .attr('stop-color', function(d) { return '#fff'; });
 
       network.svg.selectAll('.link')
         .transition()
@@ -111,7 +128,11 @@
         .attr('opacity',1);
 
       network.collapseLinks(overlay.$links.filter(function(d) { return d.level <= network.zoomLevel; }), 0, duration );
-      setTimeout(function() { overlay.$links.remove(); }, duration );
+      setTimeout(function() {
+        overlay.$links.remove();
+        network.$el.find('.mcglow').remove();
+        network.$el.find('g.node circle').attr('fill', 'url(#glowGrad)');
+      }, duration );
     },
     zoom: function(level) {
       var overlay = this,

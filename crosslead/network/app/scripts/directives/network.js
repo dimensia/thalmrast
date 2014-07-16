@@ -8,6 +8,12 @@
     return document.createElementNS(svgNs, name);
   }
 
+  function createUse( name ) {
+    var use = document.createElementNS(svgNs, 'use');
+    use.setAttributeNS(xlinkNs,'href',name);
+    return use;
+  }
+
   function indexOf( array, memberId ) {
     for ( var i=0, len=array.length; i<len; i++ ) {
       if ( array[i].id === memberId ) {
@@ -22,14 +28,14 @@
 
     var glow = to.append('filter')
       .attr('id', 'glow')
-      .attr('x', '-20%')
-      .attr('y', '-20%')
-      .attr('height', '140%')
-      .attr('width', '140%');
+      .attr('x', '-17%')
+      .attr('y', '-17%')
+      .attr('height', '134%')
+      .attr('width', '134%');
 
     glow.append('feGaussianBlur')
       //.attr('in', 'SourceAlpha')
-      .attr('stdDeviation', 3);
+      .attr('stdDeviation', 2);
 
     //glow.append('feOffset')
       //.attr('dx', 0)
@@ -42,6 +48,21 @@
       //.attr('in', 'SourceGraphic');
 
     return glow;
+  }
+
+  function addRadialGradient(to) {
+    var rg = to.append('radialGradient')
+      .attr('id', 'glowGrad');
+
+    rg.append('stop')
+      .attr('offset', '50%')
+      .attr('stop-color', '#ffffff');
+
+    rg.append('stop')
+      .attr('offset', '100%')
+      .attr('stop-color', 'rgba(128,128,128,0)')
+
+    return rg;
   }
 
   /**
@@ -105,6 +126,7 @@
   function buildGraph(nodeTypes, networkEl, width, height, pixelWidth, members, scope) {
     var $networkEl = $(networkEl),
         network = {
+          $el: $networkEl,
           zoomLevel: scope.zoom,
           expandLinks: function(sel, time, duration) {
             sel
@@ -157,11 +179,38 @@
           break;
 
         case 'circle':
-          var circle = createSvg('circle');
-          circle.setAttribute('r', imgHref ? 20 : 10);
-          circle.setAttribute('cx', 0);
-          circle.setAttribute('cy', 0);
-          g.appendChild(circle);
+          switch ( 'radial' ) {
+          case 'glow':
+            // def+use using glow filter ... didn't help
+            var circle = createUse('#glowCircle');
+            g.appendChild(circle);
+            break;
+          case 'image':
+            var bg = createSvg('image');
+            bg.setAttributeNS(xlinkNs,'href','50by50.jpeg');
+
+            bg.setAttribute('x',-27);
+            bg.setAttribute('y',-27);
+            bg.setAttribute('width',54);
+            bg.setAttribute('height',54);
+            g.appendChild(bg);
+            break;
+          case 'radial':
+            // radial gradient technique
+            var circle = createSvg('circle');
+            circle.setAttribute('r', imgHref ? 30 : 15);
+            circle.setAttribute('cx', 0);
+            circle.setAttribute('cy', 0);
+            circle.setAttribute('fill', 'url(#glowGrad)');
+            g.appendChild(circle);
+            break;
+          default: // old way, no glow
+            var circle = createSvg('circle');
+            circle.setAttribute('r', imgHref ? 20 : 10);
+            circle.setAttribute('cx', 0);
+            circle.setAttribute('cy', 0);
+            g.appendChild(circle);
+          }
           break;
 
         case 'ring':
@@ -310,7 +359,7 @@
           xExtent = d3.extent(visibleMembers, function(d) { return d.x; }),
           yExtent = d3.extent(visibleMembers, function(d) { return d.y; }),
 
-          $baseSvg = $(baseSvg[0][0]),
+          $baseSvg = $networkEl.parent(),//$(baseSvg[0][0]),
 
           graphWidth = xExtent[1] - xExtent[0] + 200,
           graphHeight = yExtent[1] - yExtent[0] + 200,
@@ -336,27 +385,35 @@
         .attr('height', height);
 
     addGlowFilter(baseSvg);
+    addRadialGradient(baseSvg);
 
     var defs = baseSvg.append('defs');
 
     // clip path used for clipping profile images to a circle
     defs.append('clipPath')
       .attr('id','circleImg')
-        .append('circle')
-          .attr('cx',0)
-          .attr('cy',0)
-          .attr('r',18);
+      .append('circle')
+        .attr('cx',0)
+        .attr('cy',0)
+        .attr('r',18);
 
     // clip path used for clipping profile images to a square
     defs.append('clipPath')
       .attr('id','squareImg')
-        .append('rect')
-          .attr('x', -18)
-          .attr('y', -18)
-          .attr('width', 36)
-          .attr('height', 36)
-          .attr('rx', 4)
-          .attr('ry', 4);
+      .append('rect')
+        .attr('x', -18)
+        .attr('y', -18)
+        .attr('width', 36)
+        .attr('height', 36)
+        .attr('rx', 4)
+        .attr('ry', 4);
+
+    defs.append('circle')
+      .attr('id','glowCircle')
+      .attr('filter','url(#glow)')
+      .attr('r', 20)
+      .attr('cx', 0)
+      .attr('cy', 0);
 
     var zoomTranslate = [ 0, 0 ],
         zoomScale = 1,
@@ -531,13 +588,13 @@
     // Node and Link rendering
     //
 
-    var singleLinks = svg.selectAll('line.link'),
-        doubleLinks = svg.selectAll('g.link');
+    var singleLinks = svg.selectAll('line.link');
+        //doubleLinks = svg.selectAll('g.link');
     var nodes = svg.selectAll('.node');
 
     function sync() {
-      singleLinks = singleLinks.data(force.links().filter(function(d) { return d.source.type !== 'label' && baseNodeScale(d.source) <= 1; }), function(d) { return d.source.id + '-' + d.target.id; });
-      doubleLinks = doubleLinks.data(force.links().filter(function(d) { return d.source.type !== 'label' && baseNodeScale(d.source) > 1; }), function(d) { return d.source.id + '-' + d.target.id; });
+      singleLinks = singleLinks.data(force.links().filter(function(d) { return d.source.type !== 'label' /* && baseNodeScale(d.source) <= 1 */; }), function(d) { return d.source.id + '-' + d.target.id; });
+      //doubleLinks = doubleLinks.data(force.links().filter(function(d) { return d.source.type !== 'label' && baseNodeScale(d.source) > 1; }), function(d) { return d.source.id + '-' + d.target.id; });
 
       singleLinks.enter()
         // insert lines before nodes so that they are beneath the nodes
@@ -547,8 +604,8 @@
       singleLinks.exit()
         .remove();
 
+      /*
       var lines = doubleLinks.enter()
-        // insert lines before nodes so that they are beneath the nodes
         .insert('g', '.node')
           .attr('class', 'link');
 
@@ -558,9 +615,10 @@
       lines
         .append('line')
           .attr('class', 'inner');
+       */
 
-      doubleLinks.exit()
-        .remove();
+      //doubleLinks.exit()
+        //.remove();
 
       nodes = nodes.data(force.nodes(), function(d) { return d.id; });
       nodes.enter()
@@ -624,13 +682,13 @@
         .attr('x2', function(d) { return d.target.x; })
         .attr('y2', function(d) { return d.target.y; });
 
-      doubleLinks
-        .filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
-        .selectAll('line')
-          .attr('x1', function(d) { return d.source.x; })
-          .attr('y1', function(d) { return d.source.y; })
-          .attr('x2', function(d) { return d.target.x; })
-          .attr('y2', function(d) { return d.target.y; });
+      //doubleLinks
+        //.filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
+        //.selectAll('line')
+          //.attr('x1', function(d) { return d.source.x; })
+          //.attr('y1', function(d) { return d.source.y; })
+          //.attr('x2', function(d) { return d.target.x; })
+          //.attr('y2', function(d) { return d.target.y; });
 
       nodes
         .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, network.zoomLevel ) + ')'; })
@@ -722,8 +780,8 @@
 
         if ( level > network.zoomLevel ) {
           var levelNodes = nodes.filter(function(d) { return d.level === level; }),
-              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === level; }),
-              levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === level; });
+              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === level; });//,
+              //levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === level; });
 
           for ( var levelDepth = 0; levelDepth < 3; levelDepth++ ) {
             var ns = levelNodes.filter(function(d) { return d.levelDepth === levelDepth; });
@@ -731,7 +789,7 @@
               break;
 
             network.expandLinks(levelSingleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }), time, duration);
-            network.expandLinks(levelDoubleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }).selectAll('line'), time, duration);
+            //network.expandLinks(levelDoubleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }).selectAll('line'), time, duration);
 
             time += duration * 0.5
 
@@ -747,8 +805,8 @@
 
         } else {
           var levelNodes = nodes.filter(function(d) { return d.level === network.zoomLevel; }),
-              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === network.zoomLevel; }),
-              levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === network.zoomLevel; });
+              levelSingleLinks = singleLinks.filter(function(d) { return d.source.level === network.zoomLevel; });//,
+              //levelDoubleLinks = doubleLinks.filter(function(d) { return d.source.level === network.zoomLevel; });
 
           for ( var levelDepth = 3; levelDepth >= 0; levelDepth-- ) {
             var ns = levelNodes.filter(function(d) { return d.levelDepth === levelDepth; });
@@ -764,7 +822,7 @@
             time += duration * 0.5
 
             network.collapseLinks(levelSingleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }), time, duration);
-            network.collapseLinks(levelDoubleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }).selectAll('line'), time, duration);
+            //network.collapseLinks(levelDoubleLinks.filter(function(d) { return d.source.levelDepth === levelDepth; }).selectAll('line'), time, duration);
 
             time += duration
           }
