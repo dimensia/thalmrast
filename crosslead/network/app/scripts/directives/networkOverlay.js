@@ -80,7 +80,8 @@
 
           rg.append('stop')
             .attr('offset', '100%')
-            .attr('stop-color', 'rgba(128,128,128,0)');
+            .attr('stop-color', '#888')
+            .attr('stop-opacity', 0);
 
           sel.select('circle').attr('fill', 'url(#mcglow' + d.id + ')' );
         })

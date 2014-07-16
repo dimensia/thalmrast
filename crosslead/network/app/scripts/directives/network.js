@@ -82,8 +82,10 @@
     };
   }
 
-  function buildGraph(nodeTypes, networkEl, width, height, pixelWidth, members, scope) {
+  function buildGraph(nodeTypes, networkEl, members, scope) {
+
     var $networkEl = $(networkEl),
+        $svg = $networkEl.find('svg'),
         network = {
           $el: $networkEl,
           zoomLevel: scope.zoom,
@@ -318,13 +320,11 @@
           xExtent = d3.extent(visibleMembers, function(d) { return d.x; }),
           yExtent = d3.extent(visibleMembers, function(d) { return d.y; }),
 
-          $baseSvg = $networkEl.parent(),//$(baseSvg[0][0]),
-
           graphWidth = xExtent[1] - xExtent[0] + 200,
           graphHeight = yExtent[1] - yExtent[0] + 200,
 
-          xZoom = $baseSvg.width() / graphWidth,
-          yZoom = $baseSvg.height() / graphHeight,
+          xZoom = $svg.width() / graphWidth,
+          yZoom = $svg.height() / graphHeight,
 
           compositeZoom = Math.min( xZoom, yZoom ),
 
@@ -332,15 +332,13 @@
           ty = -( yExtent[0] - 100 ) * compositeZoom;
 
       // center the graph horizontally
-      tx += Math.max( 0, ( $baseSvg.width() - graphWidth * compositeZoom ) / 2 );
+      tx += Math.max( 0, ( $svg.width() - graphWidth * compositeZoom ) / 2 );
 
       zoom.scale(compositeZoom);
       zoom.translate([tx, ty]);
     }
 
-    var baseSvg = d3.select('svg')
-      .attr('width', width )
-      .attr('height', height);
+    var baseSvg = d3.select('svg');
 
 
     var zoomTranslate = [ 0, 0 ],
@@ -367,7 +365,7 @@
     //
 
     var force = d3.layout.force()
-      .size([pixelWidth, height])
+      .size([$svg.width(), $svg.height()])
       .nodes(graph.nodes)
       .links(graph.links)
       .gravity(0.1)
@@ -916,23 +914,32 @@
           },
           link: function(scope, element) {
             var width = scope.width,
-                api;
-            if ( width.substring(width.length-1) === '%' ) {
-              width = $(element[0]).parent().width() * parseInt(width, 10) / 100;
-            }
+                networkEl = element[0],
+                $svg = $(networkEl).find('svg'),
+                network;
+
+            $svg.height(scope.height);
+            $svg.width(scope.width);
 
             scope.$watch('nodes', function(nv) {
               if ( nv ) {
-                api = buildGraph( nodeTypes, element[0], scope.width, scope.height, width, nv, scope );
+                network = buildGraph( nodeTypes, networkEl, nv, scope );
               }
             });
 
             scope.$watch('zoom', function(nv) {
-              api.zoom(nv);
+              network.zoom(nv);
             });
 
             scope.$watch('overlays', function(nv) {
-              api.overlays(nv);
+              network.overlays(nv);
+            });
+
+            scope.$watch('height', function(nv, ov) {
+              if (nv && nv !== ov) {
+                $svg.height(scope.height);
+                $svg.width(scope.width);
+              }
             });
           }
         };
