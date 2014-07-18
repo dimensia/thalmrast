@@ -139,7 +139,8 @@
         "y": 1285.1193672735192,
         "px": 1225.7869250775982,
         "py": 1285.1193672735192,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -221,7 +222,8 @@
         "y": 1205.0892412214178,
         "px": 888.0931746231767,
         "py": 1205.0892412214178,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -303,7 +305,8 @@
         "y": 1188.9903131590283,
         "px": 1261.897344699223,
         "py": 1188.9903131590283,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "SBD Other",
@@ -330,7 +333,8 @@
         "y": 931.8158782475905,
         "px": 902.8704135894219,
         "py": 931.8158782475905,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Data Services",
@@ -358,7 +362,8 @@
         "y": 1037.7129434574983,
         "px": -63.73141922218665,
         "py": 1037.7129434574983,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "QB Pro/Prem",
@@ -385,7 +390,8 @@
         "y": 673.4127860656803,
         "px": 254.1345110610149,
         "py": 673.4127860656803,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Retail Sales",
@@ -412,7 +418,8 @@
         "y": 134.79391799836037,
         "px": -343.9064053948108,
         "py": 134.79391799836037,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Corp Mktg",
@@ -467,7 +474,8 @@
         "y": -204.24685297352067,
         "px": -7.396279041086586,
         "py": -204.24685297352067,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -521,7 +529,8 @@
         "y": -91.49916038742518,
         "px": 123.00329848300463,
         "py": -91.49916038742518,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "SBD Other",
@@ -602,7 +611,8 @@
         "y": -77.01816954875909,
         "px": -38.51945091204131,
         "py": -77.01816954875909,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Corp Mktg",
@@ -656,7 +666,8 @@
         "y": 878.0211081334226,
         "px": -119.50165852186223,
         "py": 878.0211081334226,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -737,7 +748,8 @@
         "y": 1359.7990017436612,
         "px": 624.6202777230317,
         "py": 1359.7990017436612,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Corp Strategy and Dev",
@@ -764,7 +776,8 @@
         "y": 1482.4762484511677,
         "px": 709.1154541658037,
         "py": 1482.4762484511677,
-        "fixed": true
+        "fixed": true,
+        "group": 1
     },
     {
         "businessUnit": "Corp Strategy and Dev",
@@ -791,7 +804,8 @@
         "y": 1496.5905265003646,
         "px": 764.993398776319,
         "py": 1496.5905265003646,
-        "fixed": true
+        "fixed": true,
+        "group": 1
     },
     {
         "businessUnit": "Human Resources",
@@ -872,7 +886,8 @@
         "y": 176.65291233135935,
         "px": 1804.9495693851559,
         "py": 176.65291233135935,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Legal",
@@ -932,7 +947,8 @@
             256,
             36
         ],
-        "communications": 15
+        "communications": 15,
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -959,7 +975,8 @@
         "y": 892.0812003091767,
         "px": 151.64103375260376,
         "py": 892.0812003091767,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -992,7 +1009,8 @@
             256,
             34
         ],
-        "communications": 30
+        "communications": 30,
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -1020,7 +1038,8 @@
         "y": 1435.521376671612,
         "px": 69.6035900596583,
         "py": 1435.521376671612,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "QB Simple Start",
@@ -1102,7 +1121,8 @@
         "y": 343.98280014124936,
         "px": 1811.4438983945138,
         "py": 343.98280014124936,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "SBD Other",
@@ -1156,7 +1176,8 @@
         "y": -90.62821243635551,
         "px": 593.4310167824062,
         "py": -90.62821243635551,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -1210,7 +1231,8 @@
         "y": 1300.0925864697308,
         "px": 1037.2548163370898,
         "py": 1300.0925864697308,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "Assisted",
@@ -1237,7 +1259,8 @@
         "y": 352.25455150095047,
         "px": 1914.5695023608355,
         "py": 352.25455150095047,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "SBD Other",
@@ -1264,7 +1287,8 @@
         "y": 420.9672725249766,
         "px": -146.40432814154315,
         "py": 420.9672725249766,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "SBD Other",
@@ -1291,7 +1315,8 @@
         "y": 129.34264583288555,
         "px": 1322.0031513139074,
         "py": 129.34264583288555,
-        "fixed": true
+        "fixed": true,
+        "group": 8
     },
     {
         "businessUnit": "OSP_Others",
@@ -1372,7 +1397,8 @@
         "y": 202.05369947414476,
         "px": 1396.4571281636297,
         "py": 202.05369947414476,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -1399,7 +1425,8 @@
         "y": -85.47284686882375,
         "px": 473.5155044259314,
         "py": -85.47284686882375,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -1426,7 +1453,8 @@
         "y": 719.4033475040032,
         "px": -350.69105750843494,
         "py": 719.4033475040032,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "DIY",
@@ -1480,7 +1508,8 @@
         "y": 858.2897171972667,
         "px": 1993.743071853246,
         "py": 858.2897171972667,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -1534,7 +1563,8 @@
         "y": 495.27694715518805,
         "px": -503.94737716091936,
         "py": 495.27694715518805,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Quicken Core",
@@ -1561,7 +1591,8 @@
         "y": -166.36394254361858,
         "px": 388.6936360134813,
         "py": -166.36394254361858,
-        "fixed": 1
+        "fixed": 1,
+        "group": 10
     },
     {
         "businessUnit": "QB On-Line",
@@ -1615,7 +1646,8 @@
         "y": 895.9778733578273,
         "px": 1580.857760033762,
         "py": 895.9778733578273,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "CTO",
@@ -1642,7 +1674,8 @@
         "y": 553.2295119578981,
         "px": 1722.628506004974,
         "py": 553.2295119578981,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Data Services",
@@ -1669,7 +1702,8 @@
         "y": 994.119515497973,
         "px": 349.9067112493476,
         "py": 994.119515497973,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "CTO",
@@ -1696,7 +1730,8 @@
         "y": 708.6882121544404,
         "px": 1679.1874889582612,
         "py": 708.6882121544404,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -1777,7 +1812,8 @@
         "y": 805.1383287302975,
         "px": 1974.9241508241525,
         "py": 805.1383287302975,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Demandforce",
@@ -1831,7 +1867,8 @@
         "y": 760.0049945648467,
         "px": 1096.5058313148777,
         "py": 760.0049945648467,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -1939,7 +1976,8 @@
         "y": 264.8020338787462,
         "px": 1568.962246614608,
         "py": 264.8020338787462,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "EBS 2",
@@ -1966,7 +2004,8 @@
         "y": 928.3647281046058,
         "px": 1642.977291141761,
         "py": 928.3647281046058,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "SBD Other",
@@ -1993,7 +2032,8 @@
         "y": -203.51817041685376,
         "px": 1318.5553233216367,
         "py": -203.51817041685376,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -2052,7 +2092,8 @@
             308,
             153,
             233
-        ]
+        ],
+        "group": 3
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -2079,7 +2120,8 @@
         "y": 644.0059111023696,
         "px": 1222.43291878353,
         "py": 644.0059111023696,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "CTO",
@@ -2160,7 +2202,8 @@
         "y": 963.5780497984406,
         "px": 1686.2946980079503,
         "py": 963.5780497984406,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Data Services",
@@ -2187,7 +2230,8 @@
         "y": 861.4649029545147,
         "px": 213.76241018542436,
         "py": 861.4649029545147,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -2241,7 +2285,8 @@
         "y": 739.7548189818307,
         "px": 1435.9968641223365,
         "py": 739.7548189818307,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "QB Pro/Prem",
@@ -2268,7 +2313,8 @@
         "y": 872.4155982291717,
         "px": -579.789340224352,
         "py": 872.4155982291717,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "CTO",
@@ -2349,7 +2395,8 @@
         "y": 703.5177463600749,
         "px": 1581.2704182519803,
         "py": 703.5177463600749,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "CTO",
@@ -2457,7 +2504,8 @@
         "y": 862.0644488955603,
         "px": 1747.2600839606519,
         "py": 862.0644488955603,
-        "fixed": true
+        "fixed": true,
+        "group": 4
     },
     {
         "businessUnit": "Data Services",
@@ -2511,7 +2559,8 @@
         "y": 924.2524515738434,
         "px": -727.989873381995,
         "py": 924.2524515738434,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Core IPP",
@@ -2538,7 +2587,8 @@
         "y": 597.1471156802938,
         "px": 173.04490995898132,
         "py": 597.1471156802938,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "QB On-Line",
@@ -2565,7 +2615,8 @@
         "y": 894.7399463749944,
         "px": -644.3659430604528,
         "py": 894.7399463749944,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "DIY",
@@ -2727,7 +2778,8 @@
         "y": 1028.0536433284715,
         "px": -658.2616444047668,
         "py": 1028.0536433284715,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "QuickBase",
@@ -2754,7 +2806,8 @@
         "y": -123.11844530703152,
         "px": 1692.1344217344256,
         "py": -123.11844530703152,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Quicken Core",
@@ -2781,7 +2834,8 @@
         "y": -197.16624622829102,
         "px": 315.0811778577013,
         "py": -197.16624622829102,
-        "fixed": 1
+        "fixed": 1,
+        "group": 10
     },
     {
         "businessUnit": "DIY",
@@ -2808,7 +2862,8 @@
         "y": 242.7474916253306,
         "px": 1673.3542189414109,
         "py": 242.7474916253306,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Accountant Central",
@@ -2862,7 +2917,8 @@
         "y": 167.25971823945662,
         "px": 437.78091335190715,
         "py": 167.25971823945662,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Channel Sales Telesales II",
@@ -2916,7 +2972,8 @@
         "y": 1294.7325920871092,
         "px": 936.401578240495,
         "py": 1294.7325920871092,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "SBD Other",
@@ -2943,7 +3000,8 @@
         "y": 1103.6585415705258,
         "px": 884.9831324353042,
         "py": 1103.6585415705258,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -2997,7 +3055,8 @@
         "y": 914.7918900298763,
         "px": 758.9067584375179,
         "py": 914.7918900298763,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -3024,7 +3083,8 @@
         "y": 1196.7710619567874,
         "px": 399.3402223697192,
         "py": 1196.7710619567874,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Corporate Finance",
@@ -3051,7 +3111,8 @@
         "y": 1333.7126829956228,
         "px": 982.9089931039347,
         "py": 1333.7126829956228,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "SBD Other",
@@ -3078,7 +3139,8 @@
         "y": 976.3200194868159,
         "px": 912.8009104733736,
         "py": 976.3200194868159,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Mint",
@@ -3105,7 +3167,8 @@
         "y": 1148.5470130643273,
         "px": 400.0751194502486,
         "py": 1148.5470130643273,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Corporate Finance",
@@ -3132,7 +3195,8 @@
         "y": 1357.5469920626833,
         "px": 434.2383513175125,
         "py": 1357.5469920626833,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Docstoc",
@@ -3186,7 +3250,8 @@
         "y": 907.7810700623124,
         "px": 811.8720736392172,
         "py": 907.7810700623124,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Corporate Finance",
@@ -3213,7 +3278,8 @@
         "y": 1311.8271805999832,
         "px": 462.66571800268844,
         "py": 1311.8271805999832,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "CTO",
@@ -3268,7 +3334,8 @@
         "y": 948.7346424803234,
         "px": -271.50839061669126,
         "py": 948.7346424803234,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "QuickBase",
@@ -3349,7 +3416,8 @@
         "y": -99.51857145643118,
         "px": 866.7207745998461,
         "py": -99.51857145643118,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Human Resources",
@@ -3403,7 +3471,8 @@
         "y": -43.59468893857351,
         "px": 1199.8874710166533,
         "py": -43.59468893857351,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Human Resources",
@@ -3430,7 +3499,8 @@
         "y": 249.6753302288411,
         "px": 874.0005456561485,
         "py": 249.6753302288411,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Human Resources",
@@ -3457,7 +3527,8 @@
         "y": -24.69675686370556,
         "px": 1145.229926151095,
         "py": -24.69675686370556,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "SBD Other",
@@ -3511,7 +3582,8 @@
         "y": -188.0770914089967,
         "px": 909.6656214337852,
         "py": -188.0770914089967,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -3619,7 +3691,8 @@
         "y": 237.27826507727517,
         "px": 1160.199913557947,
         "py": 237.27826507727517,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "SBD Other",
@@ -3646,7 +3719,8 @@
         "y": 483.79849365221537,
         "px": -281.38332213000916,
         "py": 483.79849365221537,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "CTO",
@@ -3701,7 +3775,8 @@
         "y": 567.5166842141373,
         "px": -129.63188658365624,
         "py": 567.5166842141373,
-        "fixed": true
+        "fixed": true,
+        "group": 7
     },
     {
         "businessUnit": "CTO",
@@ -3728,7 +3803,8 @@
         "y": 533.5819810777754,
         "px": 1662.5073929413231,
         "py": 533.5819810777754,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -3809,7 +3885,8 @@
         "y": 182.02041040161225,
         "px": 293.42865030379284,
         "py": 182.02041040161225,
-        "fixed": 1
+        "fixed": 1,
+        "group": 10
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -3836,7 +3913,8 @@
         "y": -161.17054264869233,
         "px": 655.8836865723491,
         "py": -161.17054264869233,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "CTO",
@@ -3863,7 +3941,8 @@
         "y": 728.1838312759711,
         "px": 1736.4159641164958,
         "py": 728.1838312759711,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Data Services",
@@ -3917,7 +3996,8 @@
         "y": 979.4742448676661,
         "px": 1368.9830291021187,
         "py": 979.4742448676661,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -3944,7 +4024,8 @@
         "y": 997.1352735496409,
         "px": 1414.6701804402744,
         "py": 997.1352735496409,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -3971,7 +4052,8 @@
         "y": 1113.308550843645,
         "px": 1430.2983260848916,
         "py": 1113.308550843645,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -4025,7 +4107,8 @@
         "y": 1062.3157168278954,
         "px": 1506.2653436297285,
         "py": 1062.3157168278954,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -4052,7 +4135,8 @@
         "y": 1061.6660020479976,
         "px": 1798.8217471873572,
         "py": 1061.6660020479976,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -4106,7 +4190,8 @@
         "y": 1021.7243183498506,
         "px": 1466.8139477519462,
         "py": 1021.7243183498506,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Legal",
@@ -4138,7 +4223,8 @@
             308,
             153,
             233
-        ]
+        ],
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -4204,7 +4290,8 @@
             153,
             233
         ],
-        "communications": 15
+        "communications": 15,
+        "group": 3
     },
     {
         "businessUnit": "Channel Sales Telesales",
@@ -4312,7 +4399,8 @@
         "y": 629.3972745055514,
         "px": -604.4776905790493,
         "py": 629.3972745055514,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "QuickBase",
@@ -4339,7 +4427,8 @@
         "y": -19.374395825219352,
         "px": 1685.5887014378795,
         "py": -19.374395825219352,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Corp Mktg",
@@ -4367,7 +4456,8 @@
         "y": 312.1402863827539,
         "px": -24.76936677044323,
         "py": 312.1402863827539,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Data Services",
@@ -4421,7 +4511,8 @@
         "y": 895.4722392931765,
         "px": 466.3957089987986,
         "py": 895.4722392931765,
-        "fixed": 1
+        "fixed": 1,
+        "group": 11
     },
     {
         "businessUnit": "QB Pro/Prem",
@@ -4448,7 +4539,8 @@
         "y": 450.95970369546166,
         "px": -190.30276043330943,
         "py": 450.95970369546166,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Global - GSB Generic",
@@ -4475,7 +4567,8 @@
         "y": -124.03446717789132,
         "px": -456.4861475587904,
         "py": -124.03446717789132,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "SBD Other",
@@ -4502,7 +4595,8 @@
         "y": -200.62589739940074,
         "px": 1475.8386613141768,
         "py": -200.62589739940074,
-        "fixed": true
+        "fixed": true,
+        "group": 8
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -4529,7 +4623,8 @@
         "y": 143.43102497542014,
         "px": 766.9343858631595,
         "py": 143.43102497542014,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -4556,7 +4651,8 @@
         "y": 131.04597825501315,
         "px": 576.0233152051397,
         "py": 131.04597825501315,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -4583,7 +4679,8 @@
         "y": 100.3625085472743,
         "px": 744.9083406662476,
         "py": 100.3625085472743,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "QB On-Line",
@@ -4610,7 +4707,8 @@
         "y": 804.6366813744527,
         "px": -468.5221126396893,
         "py": 804.6366813744527,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Retail Sales",
@@ -4637,7 +4735,8 @@
         "y": 399.9662788562382,
         "px": 318.75489916751303,
         "py": 399.9662788562382,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Corp Mktg",
@@ -4691,7 +4790,8 @@
         "y": 718.5176075697725,
         "px": -583.1371433901837,
         "py": 718.5176075697725,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -4718,7 +4818,8 @@
         "y": 677.8313731416399,
         "px": -634.8872965087355,
         "py": 677.8313731416399,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -4745,7 +4846,8 @@
         "y": 929.396794677742,
         "px": 1115.3625869267353,
         "py": 929.396794677742,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "Demandforce",
@@ -4826,7 +4928,8 @@
         "y": 415.95583838340724,
         "px": 81.20614548526301,
         "py": 415.95583838340724,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Quicken Core",
@@ -4853,7 +4956,8 @@
         "y": 245.44884915834564,
         "px": 282.9436370523408,
         "py": 245.44884915834564,
-        "fixed": 1
+        "fixed": 1,
+        "group": 10
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -4907,7 +5011,8 @@
         "y": 1015.8799728930303,
         "px": 431.36200076135526,
         "py": 1015.8799728930303,
-        "fixed": 1
+        "fixed": 1,
+        "group": 11
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -4934,7 +5039,8 @@
         "y": 1199.3760516914704,
         "px": 1351.645861809337,
         "py": 1199.3760516914704,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "Legal",
@@ -5016,7 +5122,8 @@
         "y": 1502.283568828969,
         "px": 1138.31288723614,
         "py": 1502.283568828969,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Finance Operations",
@@ -5043,7 +5150,8 @@
         "y": 1527.8473434673122,
         "px": 1083.4532090075081,
         "py": 1527.8473434673122,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "CTO",
@@ -5124,7 +5232,8 @@
         "y": 386.6221747717894,
         "px": 1728.318170694834,
         "py": 386.6221747717894,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "EBS 2",
@@ -5151,7 +5260,8 @@
         "y": 1193.9707075815788,
         "px": 1717.8212540572283,
         "py": 1193.9707075815788,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "DIY",
@@ -5178,7 +5288,8 @@
         "y": 192.1593976601518,
         "px": 1850.7426139575346,
         "py": 192.1593976601518,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "DIY",
@@ -5286,7 +5397,8 @@
         "y": 1149.797521118588,
         "px": 1744.7546093254539,
         "py": 1149.797521118588,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -5313,7 +5425,8 @@
         "y": -207.94000611783667,
         "px": 703.5841276844751,
         "py": -207.94000611783667,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "CTO",
@@ -5340,7 +5453,8 @@
         "y": 681.6972416879329,
         "px": 1778.9911486761996,
         "py": 681.6972416879329,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "QB Pro/Prem",
@@ -5394,7 +5508,8 @@
         "y": -105.73893557891734,
         "px": 1734.8111640064435,
         "py": -105.73893557891734,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Global - CTG Generic",
@@ -5421,7 +5536,8 @@
         "y": -81.7984621613574,
         "px": -493.96469602018226,
         "py": -81.7984621613574,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "QB On-Line",
@@ -5448,7 +5564,8 @@
         "y": 946.6030097369779,
         "px": -456.54889725896606,
         "py": 946.6030097369779,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Quicken Core",
@@ -5502,7 +5619,8 @@
         "y": 970.7453137088057,
         "px": 408.05812719368464,
         "py": 970.7453137088057,
-        "fixed": 1
+        "fixed": 1,
+        "group": 11
     },
     {
         "businessUnit": "Data Services",
@@ -5556,7 +5674,8 @@
         "y": 279.8226824205043,
         "px": 1512.2406333771548,
         "py": 279.8226824205043,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Docstoc",
@@ -5583,7 +5702,8 @@
         "y": 968.851077338232,
         "px": -380.05096810746284,
         "py": 968.851077338232,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Data Services",
@@ -5610,7 +5730,8 @@
         "y": 971.8643245873172,
         "px": 65.81751056409152,
         "py": 971.8643245873172,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -5637,7 +5758,8 @@
         "y": -165.58457422060854,
         "px": 746.5403664081191,
         "py": -165.58457422060854,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Global - GSB Generic",
@@ -5664,7 +5786,8 @@
         "y": 888.7504125791526,
         "px": -482.0949112561798,
         "py": 888.7504125791526,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Finance Operations",
@@ -5691,7 +5814,8 @@
         "y": 1418.351739302335,
         "px": 1007.738128040731,
         "py": 1418.351739302335,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "SBD Other",
@@ -5718,7 +5842,8 @@
         "y": -158.74612624836294,
         "px": 1447.0625969745436,
         "py": -158.74612624836294,
-        "fixed": true
+        "fixed": true,
+        "group": 8
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -5745,7 +5870,8 @@
         "y": 43.79203714224674,
         "px": 634.740704657764,
         "py": 43.79203714224674,
-        "fixed": true
+        "fixed": true,
+        "group": 0
     },
     {
         "businessUnit": "Legal",
@@ -5827,7 +5953,8 @@
         "y": 149.08726096337352,
         "px": 1934.1401236744782,
         "py": 149.08726096337352,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "QuickBase",
@@ -5854,7 +5981,8 @@
         "y": -63.75318535420729,
         "px": 1724.129767157249,
         "py": -63.75318535420729,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Demandforce",
@@ -5881,7 +6009,8 @@
         "y": 151.71388190580922,
         "px": 2030.2315996562352,
         "py": 151.71388190580922,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -5908,7 +6037,8 @@
         "y": 1208.372458551024,
         "px": 1162.2788406353156,
         "py": 1208.372458551024,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "Workplace",
@@ -5935,7 +6065,8 @@
         "y": 1472.3253742215754,
         "px": 1191.6265259130032,
         "py": 1472.3253742215754,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "ProTax - ProSeries",
@@ -6017,7 +6148,8 @@
         "y": 34.438350091049344,
         "px": 1361.0046334112128,
         "py": 34.438350091049344,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "SBD Other",
@@ -6044,7 +6176,8 @@
         "y": 76.8066268154888,
         "px": 1395.8787758574238,
         "py": 76.8066268154888,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Human Resources",
@@ -6098,7 +6231,8 @@
         "y": 280.8781356618655,
         "px": 1165.7288206391015,
         "py": 280.8781356618655,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -6152,7 +6286,8 @@
         "y": -222.79260712275885,
         "px": 1374.1175101216165,
         "py": -222.79260712275885,
-        "fixed": true
+        "fixed": true,
+        "group": 8
     },
     {
         "businessUnit": "SBD Other",
@@ -6213,7 +6348,8 @@
             232,
             1
         ],
-        "communications": 15
+        "communications": 15,
+        "group": 0
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -6328,7 +6464,8 @@
             233,
             1
         ],
-        "communications": 45
+        "communications": 45,
+        "group": 0
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/laura_fennell_lg.jpg",
@@ -6363,7 +6500,8 @@
             232,
             259
         ],
-        "communications": 105
+        "communications": 105,
+        "group": 3
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/andrew_westergren_lg.jpg",
@@ -6392,7 +6530,8 @@
         "y": 1368.5569608290662,
         "px": 693.5005644281803,
         "py": 1368.5569608290662,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/kris_halvorsen_lg.jpg",
@@ -6421,7 +6560,8 @@
         "y": 608.7715436105166,
         "px": 1530.8261997014074,
         "py": 608.7715436105166,
-        "fixed": true
+        "fixed": true,
+        "group": 4
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/tayloe_stansbury_lg.jpg",
@@ -6450,7 +6590,8 @@
         "y": 755.7406132641518,
         "px": 1286.5545832525509,
         "py": 755.7406132641518,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/noelle_eder_lg.jpg",
@@ -6479,7 +6620,8 @@
         "y": 245.9978312832655,
         "px": 1321.8425180980112,
         "py": 245.9978312832655,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/neil_williams_lg.jpg",
@@ -6539,7 +6681,8 @@
         "y": 732.2753334962485,
         "px": -167.93575504895455,
         "py": 732.2753334962485,
-        "fixed": true
+        "fixed": true,
+        "group": 7
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/ginny_lee_lg.jpg",
@@ -6568,7 +6711,8 @@
         "y": 387.4454905667497,
         "px": 1514.6415658254423,
         "py": 387.4454905667497,
-        "fixed": true
+        "fixed": true,
+        "group": 8
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/dan_maurer_lg.jpg",
@@ -6597,7 +6741,8 @@
         "y": 479.2775107429463,
         "px": 1248.4479179259317,
         "py": 479.2775107429463,
-        "fixed": true
+        "fixed": true,
+        "group": 8
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/cece_morken_lg.jpg",
@@ -6626,7 +6771,8 @@
         "y": 1025.3132494827719,
         "px": 1072.8208368764065,
         "py": 1025.3132494827719,
-        "fixed": true
+        "fixed": true,
+        "group": 12
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/barry_saik_lg.jpg",
@@ -6655,7 +6801,8 @@
         "y": 283.0824658894559,
         "px": 392.6774767421755,
         "py": 283.0824658894559,
-        "fixed": 1
+        "fixed": 1,
+        "group": 10
     },
     {
         "businessUnit": "Accountant Central",
@@ -6683,7 +6830,8 @@
         "y": 979.8185346604365,
         "px": 564.0739247474994,
         "py": 979.8185346604365,
-        "fixed": true
+        "fixed": true,
+        "group": 11
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/dan_wernikoff_lg.jpg",
@@ -6712,7 +6860,8 @@
         "y": 728.9603128066864,
         "px": 156.24169238230292,
         "py": 728.9603128066864,
-        "fixed": true
+        "fixed": true,
+        "group": 7
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/sherry_whiteley_lg.jpg",
@@ -6770,7 +6919,8 @@
         "y": 230.05890247895303,
         "px": 684.9629495898049,
         "py": 230.05890247895303,
-        "fixed": true
+        "fixed": true,
+        "group": 9
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/atticus_tysen_lg.jpg",
@@ -6799,7 +6949,8 @@
         "y": 947.2251697063525,
         "px": 1489.3082663717348,
         "py": 947.2251697063525,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/cheryl_ainoa_lg.jpg",
@@ -6828,7 +6979,8 @@
         "y": 780.1537294847113,
         "px": 1619.4935825012985,
         "py": 780.1537294847113,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "img": "http://about.intuit.com/about_intuit/images/executives/caroline_donahue_lg_rev.jpg",
@@ -6857,7 +7009,8 @@
         "y": 459.08098518337584,
         "px": 213.4722982094812,
         "py": 459.08098518337584,
-        "fixed": true
+        "fixed": true,
+        "group": 2
     },
     {
         "businessUnit": "Legal",
@@ -6884,7 +7037,8 @@
         "y": 922.6199737121854,
         "px": -168.53451175574335,
         "py": 922.6199737121854,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -6912,7 +7066,8 @@
         "y": 927.0529419830723,
         "px": -75.25383975609687,
         "py": 927.0529419830723,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -6939,7 +7094,8 @@
         "y": 199.61439153898627,
         "px": 763.3353249715078,
         "py": 199.61439153898627,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -6966,7 +7122,8 @@
         "y": 248.88095205769952,
         "px": 512.3496483126897,
         "py": 248.88095205769952,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Corp Mktg",
@@ -6994,7 +7151,8 @@
         "y": 6.675805848199175,
         "px": 66.04356296580188,
         "py": 6.675805848199175,
-        "fixed": true
+        "fixed": true,
+        "group": 2
     },
     {
         "businessUnit": "Legal",
@@ -7028,7 +7186,8 @@
             36,
             233
         ],
-        "communications": 30
+        "communications": 30,
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -7083,7 +7242,8 @@
         "y": 1338.346921734845,
         "px": 119.70114267419753,
         "py": 1338.346921734845,
-        "fixed": true
+        "fixed": true,
+        "group": 3
     },
     {
         "businessUnit": "Legal",
@@ -7117,7 +7277,8 @@
             182,
             153
         ],
-        "communications": 15
+        "communications": 15,
+        "group": 3
     },
     {
         "businessUnit": "Corp Mktg",
@@ -7144,7 +7305,8 @@
         "y": 468.77242362570377,
         "px": 354.0101186501044,
         "py": 468.77242362570377,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Corp Strategy and Dev",
@@ -7171,7 +7333,8 @@
         "y": 1313.5585808551557,
         "px": 646.9090317665139,
         "py": 1313.5585808551557,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Global - QBO",
@@ -7198,7 +7361,8 @@
         "y": 140.32668853573333,
         "px": -54.41419882563222,
         "py": 140.32668853573333,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "GBD Shared-Mngt Exp.-Royalties",
@@ -7226,7 +7390,8 @@
         "y": -36.2857524850358,
         "px": -332.911281052026,
         "py": -36.2857524850358,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Global - QBO",
@@ -7254,7 +7419,8 @@
         "y": 196.30918785525384,
         "px": 57.09110203570152,
         "py": 196.30918785525384,
-        "fixed": true
+        "fixed": true,
+        "group": 2
     },
     {
         "businessUnit": "Corp Mktg",
@@ -7281,7 +7447,8 @@
         "y": 353.41298130815693,
         "px": 275.19306945083736,
         "py": 353.41298130815693,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Demandforce",
@@ -7309,7 +7476,8 @@
         "y": 38.40052339665306,
         "px": 1903.963441933971,
         "py": 38.40052339665306,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -7364,7 +7532,8 @@
         "y": -5.047529655961938,
         "px": 534.1723911239936,
         "py": -5.047529655961938,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "SBD Other",
@@ -7392,7 +7561,8 @@
         "y": 34.85439278402991,
         "px": 1475.2236066507878,
         "py": 34.85439278402991,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "CTO",
@@ -7420,7 +7590,8 @@
         "y": 570.9631680329778,
         "px": 1412.7389727350208,
         "py": 570.9631680329778,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "CTO",
@@ -7447,7 +7618,8 @@
         "y": 820.5965361099273,
         "px": 1131.8462796589815,
         "py": 820.5965361099273,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Data Services",
@@ -7474,7 +7646,8 @@
         "y": 882.1767457876526,
         "px": 361.6761890040233,
         "py": 882.1767457876526,
-        "fixed": 1
+        "fixed": 1,
+        "group": 3
     },
     {
         "businessUnit": "CTO",
@@ -7501,7 +7674,8 @@
         "y": 788.3930180316933,
         "px": 1771.4133733585259,
         "py": 788.3930180316933,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "CTO",
@@ -7528,7 +7702,8 @@
         "y": 775.3112137837028,
         "px": 1162.6104189263187,
         "py": 775.3112137837028,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -7555,7 +7730,8 @@
         "y": 1055.6761204403867,
         "px": 1177.947076786158,
         "py": 1055.6761204403867,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "DIY",
@@ -7582,7 +7758,8 @@
         "y": 322.26818711231766,
         "px": 1726.0803190183171,
         "py": 322.26818711231766,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "CTO",
@@ -7610,7 +7787,8 @@
         "y": 574.7517872425873,
         "px": 1894.5025862687905,
         "py": 574.7517872425873,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -7637,7 +7815,8 @@
         "y": 765.4665216072458,
         "px": -381.5370460690692,
         "py": 765.4665216072458,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Data Services",
@@ -7664,7 +7843,8 @@
         "y": 914.3796737200352,
         "px": 302.0854295091335,
         "py": 914.3796737200352,
-        "fixed": true
+        "fixed": true,
+        "group": 3
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -7692,7 +7872,8 @@
         "y": 598.1491640059385,
         "px": -377.2767975637962,
         "py": 598.1491640059385,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "CTO",
@@ -7719,7 +7900,8 @@
         "y": 592.9721460853497,
         "px": 1677.427726479238,
         "py": 592.9721460853497,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Quicken Core",
@@ -7747,7 +7929,8 @@
         "y": -47.511138837429684,
         "px": 371.2021961179466,
         "py": -47.511138837429684,
-        "fixed": 1
+        "fixed": 1,
+        "group": 10
     },
     {
         "businessUnit": "QB Simple Start",
@@ -7775,7 +7958,8 @@
         "y": 952.3416441428177,
         "px": -537.5322967499362,
         "py": 952.3416441428177,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "CTO",
@@ -7802,7 +7986,8 @@
         "y": 727.4414804985657,
         "px": 1538.1230570738994,
         "py": 727.4414804985657,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "CTO",
@@ -7830,7 +8015,8 @@
         "y": 744.3085628430579,
         "px": 1837.5656786315024,
         "py": 744.3085628430579,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "SBD Other",
@@ -7858,7 +8044,8 @@
         "y": 1335.9145043898884,
         "px": 877.8730252738007,
         "py": 1335.9145043898884,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -7885,7 +8072,8 @@
         "y": 905.9099744026662,
         "px": 861.6772733345801,
         "py": 905.9099744026662,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -7913,7 +8101,8 @@
         "y": 1187.222695359016,
         "px": 497.46222444289174,
         "py": 1187.222695359016,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Corporate Finance",
@@ -7940,7 +8129,8 @@
         "y": 1018.3992656717012,
         "px": 917.453404905747,
         "py": 1018.3992656717012,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -7967,7 +8157,8 @@
         "y": 670.8499608623727,
         "px": -117.89083699588616,
         "py": 670.8499608623727,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "SBD Other",
@@ -7994,7 +8185,8 @@
         "y": 1063.5156091000713,
         "px": 904.2838921154828,
         "py": 1063.5156091000713,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Corporate Finance",
@@ -8022,7 +8214,8 @@
         "y": 1361.9404646017795,
         "px": 534.196073520407,
         "py": 1361.9404646017795,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "Demandforce",
@@ -8050,7 +8243,8 @@
         "y": -33.61092111593371,
         "px": 1822.571575293751,
         "py": -33.61092111593371,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Demandforce",
@@ -8078,7 +8272,8 @@
         "y": 113.93332451696836,
         "px": 1638.1047810907808,
         "py": 113.93332451696836,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "FMS H3 Businesses",
@@ -8105,7 +8300,8 @@
         "y": 623.8052976367784,
         "px": 230.67789705503256,
         "py": 623.8052976367784,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "CTO",
@@ -8132,7 +8328,8 @@
         "y": 529.8729261534019,
         "px": 1591.4717117885377,
         "py": 529.8729261534019,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Core IPP",
@@ -8159,7 +8356,8 @@
         "y": 619.7613765139445,
         "px": 117.45604717940314,
         "py": 619.7613765139445,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "QB Pro/Prem",
@@ -8187,7 +8385,8 @@
         "y": 864.3442029341279,
         "px": -335.4320460058797,
         "py": 864.3442029341279,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -8215,7 +8414,8 @@
         "y": -68.95088025340849,
         "px": 690.7180351639669,
         "py": -68.95088025340849,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Human Resources",
@@ -8243,7 +8443,8 @@
         "y": -85.74513984130476,
         "px": 977.8505211077994,
         "py": -85.74513984130476,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -8298,7 +8499,8 @@
         "y": 147.0643805981125,
         "px": 860.7620597418556,
         "py": 147.0643805981125,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "SBD Other",
@@ -8325,7 +8527,8 @@
         "y": 347.96753224306366,
         "px": 860.418578524517,
         "py": 347.96753224306366,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "CTO",
@@ -8353,7 +8556,8 @@
         "y": 944.3972761720318,
         "px": 1879.387946726695,
         "py": 944.3972761720318,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Human Resources",
@@ -8381,7 +8585,8 @@
         "y": 79.22450116646743,
         "px": 1181.702171223351,
         "py": 79.22450116646743,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Human Resources",
@@ -8409,7 +8614,8 @@
         "y": -9.479219388030394,
         "px": 848.6791067714677,
         "py": -9.479219388030394,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Human Resources",
@@ -8437,7 +8643,8 @@
         "y": -117.63411208845787,
         "px": 1142.9288965478772,
         "py": -117.63411208845787,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Legal",
@@ -8466,7 +8673,8 @@
         "px": -7.370158166052036,
         "py": 1161.2334197395055,
         "fixed": 1,
-        "communications": 60
+        "communications": 60,
+        "group": 3
     },
     {
         "businessUnit": "EBS 2",
@@ -8494,7 +8702,8 @@
         "y": 1047.4086581140455,
         "px": 1325.1985950894189,
         "py": 1047.4086581140455,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -8522,7 +8731,8 @@
         "y": 1067.2351531121265,
         "px": 1680.373843323205,
         "py": 1067.2351531121265,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "EBS 2",
@@ -8550,7 +8760,8 @@
         "y": 1151.017582721947,
         "px": 1626.4033022185658,
         "py": 1151.017582721947,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Demandforce",
@@ -8577,7 +8788,8 @@
         "y": 42.475516496311286,
         "px": 1764.4259849198318,
         "py": 42.475516496311286,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Consumer Tax Group",
@@ -8604,7 +8816,8 @@
         "y": 161.15810239357157,
         "px": 511.7376070447194,
         "py": 161.15810239357157,
-        "fixed": 1
+        "fixed": 1,
+        "group": 9
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -8632,7 +8845,8 @@
         "y": 686.0698070129015,
         "px": -435.1374219483266,
         "py": 686.0698070129015,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "Accountant Central",
@@ -8659,7 +8873,8 @@
         "y": 930.832491637117,
         "px": 638.9101150941334,
         "py": 930.832491637117,
-        "fixed": 1
+        "fixed": 1,
+        "group": 11
     },
     {
         "businessUnit": "QB On-Line",
@@ -8686,7 +8901,8 @@
         "y": 847.5172347567704,
         "px": -428.77629464015735,
         "py": 847.5172347567704,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "SBD Other",
@@ -8714,7 +8930,8 @@
         "y": -95.7633986316875,
         "px": 1320.604211944314,
         "py": -95.7633986316875,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "Finance Operations",
@@ -8742,7 +8959,8 @@
         "y": 1493.6635622708925,
         "px": 872.106207701833,
         "py": 1493.6635622708925,
-        "fixed": 1
+        "fixed": 1,
+        "group": 1
     },
     {
         "businessUnit": "SBD Other",
@@ -8769,7 +8987,8 @@
         "y": 151.07846800587214,
         "px": 1417.5388124846588,
         "py": 151.07846800587214,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "CTO",
@@ -8797,7 +9016,8 @@
         "y": 832.4592402682885,
         "px": 1872.3763573100073,
         "py": 832.4592402682885,
-        "fixed": 1
+        "fixed": 1,
+        "group": 4
     },
     {
         "businessUnit": "Innov Merch Svcs",
@@ -8824,7 +9044,8 @@
         "y": 663.6635713023364,
         "px": -343.7789791131427,
         "py": 663.6635713023364,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "QB Pro/Prem",
@@ -8852,7 +9073,8 @@
         "y": 485.35348145361513,
         "px": -18.337062888083835,
         "py": 485.35348145361513,
-        "fixed": 1
+        "fixed": 1,
+        "group": 7
     },
     {
         "businessUnit": "QuickBase",
@@ -8880,7 +9102,8 @@
         "y": 0.5296486262243505,
         "px": 1612.1685375977868,
         "py": 0.5296486262243505,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "DIY",
@@ -8908,7 +9131,8 @@
         "y": 256.90793821593104,
         "px": 1752.8802272659325,
         "py": 256.90793821593104,
-        "fixed": 1
+        "fixed": 1,
+        "group": 8
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -8935,7 +9159,8 @@
         "y": 940.7824599066373,
         "px": 1054.4841290471081,
         "py": 940.7824599066373,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "businessUnit": "Quicken Core",
@@ -8963,7 +9188,8 @@
         "y": 78.64939577617832,
         "px": 265.2317321908336,
         "py": 78.64939577617832,
-        "fixed": 1
+        "fixed": 1,
+        "group": 10
     },
     {
         "businessUnit": "Retail Sales",
@@ -8990,7 +9216,8 @@
         "y": 428.57086618901536,
         "px": 381.92544826748895,
         "py": 428.57086618901536,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Retail Sales",
@@ -9018,7 +9245,8 @@
         "y": 139.57920729782307,
         "px": -163.82475339744116,
         "py": 139.57920729782307,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "Human Resources",
@@ -9045,7 +9273,8 @@
         "y": 6.21512814959317,
         "px": 1037.1043561520587,
         "py": 6.21512814959317,
-        "fixed": 1
+        "fixed": 1,
+        "group": 5
     },
     {
         "businessUnit": "Accountant Central",
@@ -9072,7 +9301,8 @@
         "y": 853.7829840049563,
         "px": 575.6052318356542,
         "py": 853.7829840049563,
-        "fixed": 1
+        "fixed": 1,
+        "group": 11
     },
     {
         "businessUnit": "Channel Sales Telesales",
@@ -9100,7 +9330,8 @@
         "y": -77.69052349402244,
         "px": -236.57923920606243,
         "py": -77.69052349402244,
-        "fixed": 1
+        "fixed": 1,
+        "group": 2
     },
     {
         "businessUnit": "ProTax - Lacerte",
@@ -9128,7 +9359,8 @@
         "y": 1263.644609903097,
         "px": 1130.8697624683996,
         "py": 1263.644609903097,
-        "fixed": 1
+        "fixed": 1,
+        "group": 12
     },
     {
         "id": 333,

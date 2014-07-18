@@ -24,7 +24,9 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork', 'ngAnimate'])
 
       var dataset = params.dataset || 'intuit';
       var groupDataset = params.groupDataset || 'intuitGroups';
-      var groupMappings = params.groupMapping || 'intuitGroupMappings';
+      // Only do group mappings if explicitly set. No easy crude
+      // check since not all nodes are in groups
+      var groupMappings = params.groupMapping;
       if (dataset !== 'test') {
 
         async.parallel({

@@ -1,5 +1,5 @@
 [{
-  "id": "1",
+  "id": 1,
   "name": "Finance",
   "type": "Functional Group",
   "Trust [C]": "5.36",
@@ -13,7 +13,7 @@
   "Analyze [P]": "4.54",
   "Adaptability": "5.04"
 }, {
-  "id": "2",
+  "id": 2,
   "name": "Marketing & Sales",
   "type": "Functional Group",
   "Trust [C]": "5.2",
@@ -27,7 +27,7 @@
   "Analyze [P]": "4.54",
   "Adaptability": "4.65"
 }, {
-  "id": "3",
+  "id": 3,
   "name": "Legal, Data, Compliance & Policy",
   "type": "Functional Group",
   "Trust [C]": "5.18",
@@ -41,7 +41,7 @@
   "Analyze [P]": "4.75",
   "Adaptability": "5.03"
 }, {
-  "id": "4",
+  "id": 4,
   "name": "Product & Technology",
   "type": "Functional Group",
   "Trust [C]": "5",
@@ -55,7 +55,7 @@
   "Analyze [P]": "4.73",
   "Adaptability": "4.98"
 }, {
-  "id": "5",
+  "id": 5,
   "name": "Human Resources",
   "type": "Functional Group",
   "Trust [C]": "5.07",
@@ -69,7 +69,7 @@
   "Analyze [P]": "4.46",
   "Adaptability": "5.09"
 }, {
-  "id": "6",
+  "id": 6,
   "name": "Other Functional Group",
   "type": "Functional Group",
   "Trust [C]": "",
@@ -83,7 +83,7 @@
   "Analyze [P]": "",
   "Adaptability": ""
 }, {
-  "id": "7",
+  "id": 7,
   "name": "Small Business Financial Solutions Group",
   "type": "Business Unit",
   "Trust [C]": "4.98",
@@ -97,7 +97,7 @@
   "Analyze [P]": "4.08",
   "Adaptability": "4.39"
 }, {
-  "id": "8",
+  "id": 8,
   "name": "Small Business Management Solutions Group",
   "type": "Business Unit",
   "Trust [C]": "5.21",
@@ -111,7 +111,7 @@
   "Analyze [P]": "4.69",
   "Adaptability": "4.78"
 }, {
-  "id": "9",
+  "id": 9,
   "name": "Consumer Tax Group",
   "type": "Business Unit",
   "Trust [C]": "5.35",
@@ -125,7 +125,7 @@
   "Analyze [P]": "5.12",
   "Adaptability": "5.55"
 }, {
-  "id": "10",
+  "id": 10,
   "name": "Consumer Ecosystem Group",
   "type": "Business Unit",
   "Trust [C]": "5.36",
@@ -139,7 +139,7 @@
   "Analyze [P]": "5.01",
   "Adaptability": "4.93"
 }, {
-  "id": "11",
+  "id": 11,
   "name": "Account and Advisor Group",
   "type": "Business Unit",
   "Trust [C]": "5.03",
@@ -153,7 +153,7 @@
   "Analyze [P]": "4.64",
   "Adaptability": "5.06"
 }, {
-  "id": "12",
+  "id": 12,
   "name": "Pro Tax Group",
   "type": "Business Unit",
   "Trust [C]": "5.29",
@@ -167,7 +167,7 @@
   "Analyze [P]": "4.93",
   "Adaptability": "5.43"
 }, {
-  "id": "13",
+  "id": 13,
   "name": "Other Business Unit",
   "type": "Business Unit",
   "Trust [C]": "",

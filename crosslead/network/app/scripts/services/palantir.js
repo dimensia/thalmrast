@@ -353,7 +353,7 @@ angular.module('clNetwork')
 
             mappingsCopy.forEach(function(mapping) {
               if (mapping.name === node.name || detailedMatch(node.name, mapping.name)) {
-                node.group = mapping.groupId;
+                node.group = Number(mapping.groupId);
                 return node;
               }
             });
