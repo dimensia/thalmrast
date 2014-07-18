@@ -331,6 +331,35 @@ angular.module('clNetwork')
           });
 
           return data;
+        },
+        /**
+         * This function maps a set of nodes to groups
+         * @param {Array} nodes to map
+         * @param {Object} name to group id mappings
+         * @return Array augmented nodes
+         */
+        mapNodeGroups: function(nodes, mappings) {
+          var mappingsCopy = angular.copy(mappings);
+
+          mappingsCopy.forEach(function(mapping) {
+            normalizeName({
+              field: 'name'
+            }, {}, mapping);
+          });
+
+          return nodes.map(function(node) {
+            // Reset any old group values
+            delete node.group;
+
+            mappingsCopy.forEach(function(mapping) {
+              if (mapping.name === node.name || detailedMatch(node.name, mapping.name)) {
+                node.group = mapping.groupId;
+                return node;
+              }
+            });
+
+            return node;
+          });
         }
       };
     }

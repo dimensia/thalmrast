@@ -137,67 +137,77 @@ network {
 
   .selection, .selected {
     fill: none;
-    stroke: #888;
+    stroke: #000;
     stroke-width: 1.5px;
     stroke-dasharray: 5,5;
   }
 }
 
-
 //
-// This styling is specific to the UI overlaid on the network-map
+// Styling for the network controls here
 //
 
-body {
-  font-family: Oxygen, Helvetica, sans-serif;
-  background: #eee;
-  overflow: hidden;
-}
+network-control {
+  $width: 300px;
 
-button.btn:focus, button.btn:active:focus {
-  outline: none;
-}
-
-.networkContainer {
-  position: relative;
-
-  .btnBar {
+  button.openControls {
     position: absolute;
-    left: 8px;
-    bottom: 8px;
+    top: 200px;
+    left: -34px;
+    display: inline-block;
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    opacity: 1;
+
+    &.ng-hide {
+      //display: block !important;
+      left: 2*-34px+$width;
+      opacity: 0;
+    }
+
+    &.ng-hide-add.ng-hide-add-active,
+    &.ng-hide-remove.ng-hide-remove-active {
+      -webkit-transition:all ease-in 0.5s;
+      transition:all ease-in 0.5s;
+    }
   }
 
-  button.overlay {
-    padding: 4px 9px;
-    height: 28px;
-  }
-
-  .zoom {
-    width: 32px;
-  }
-
-  .helpBtn {
-    margin-left: 32px;
-  }
-
-  .communicationBtn {
-    margin-left: 32px;
-  }
-
-  .panes {
+  .drawer {
     position: absolute;
-    bottom: 8px;
-    right: 0px;
-  }
+    width: $width;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 0 8px 8px;
+    left: 0px;
 
-  .help, .editor, .card {
-    filter: blur(5px);
-    background: #fff;
-    border-radius: 4px;
-    width: 400px;
-    min-height: 218px;
-    padding: 8px;
-    margin: 8px 8px 0 0;
+    &.ng-hide {
+      left: -$width;
+    }
+
+    &.ng-hide-add.ng-hide-add-active,
+    &.ng-hide-remove.ng-hide-remove-active {
+      -webkit-transition:all ease-in 0.5s;
+      transition:all ease-in 0.5s;
+    }
+
+    button.closeControls {
+      display: block;
+      margin-bottom: 8px;
+      width: $width - 16px;
+      text-align: left;
+    }
+
+    .scroller {
+      height: 100%;
+      overflow: auto;
+      padding-right: 8px;
+    }
+
+    .accordion-toggle {
+      display: inline-block;
+      width: 100%;
+    }
 
     .header {
       border-bottom: 1px solid #000;
@@ -221,22 +231,37 @@ button.btn:focus, button.btn:active:focus {
       margin-top: 8px;
       clear: both;
     }
-  }
-
-  .card {
-    width: 500px;
 
     img {
       float: right;
       margin: 0 0 8px 8px;
       border: 1px solid #000;
     }
+
+    .zoom {
+      width: 42px;
+    }
   }
 }
 
-.editor, .help, .card {
-  border: 1px solid #000;
-  box-shadow: 2px 2px 3px #ccc;
+
+//
+// This styling is specific to the UI overlaid on the network-map
+//
+
+body {
+  font-family: Oxygen, Helvetica, sans-serif;
+  background: #eee;
+  overflow: hidden;
+}
+
+button.btn:focus, button.btn:active:focus {
+  outline: none;
+}
+
+.networkContainer {
+  position: relative;
+
 }
 
 

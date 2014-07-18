@@ -43,10 +43,6 @@
         maxId = node.id;
       }
 
-      if ( node.root || node.children ) {
-        node.group = nextGroup++;
-      }
-
       if ( node.parent ) {
         linkCount++;
       }
@@ -67,10 +63,6 @@
         };
 
         links[ nextLink++ ] = link;
-
-        if ( !node.group ) {
-          node.group = parent.group;
-        }
       }
     }
 
@@ -88,7 +80,7 @@
         $svg = $networkEl.find('svg'),
         network = {
           $el: $networkEl,
-          zoomLevel: scope.zoom,
+          zoomLevel: 0,
           expandLinks: function(sel, time, duration) {
             sel
               .attr('x1', function(d) { return d.target.x; })
@@ -370,10 +362,10 @@
       .links(graph.links)
       .gravity(0.1)
       .linkDistance(function(d) {
-        return d.source.group !== d.target.group ? 120 : 50;
+        return d.source.children ? 120 : 50;
       })
       //.linkStrength(function(x) {
-        //return x.source.group !== x.target.group ? 40 : 20;
+        //return x.source.children ? 40 : 20;
       //})
       .charge(-1020);
 
@@ -553,6 +545,41 @@
       nodes.exit()
         .remove();
 
+      applyOnClickNode();
+
+      if ( members.some(function(d) { return d.x === undefined; }) ) {
+        force.start();
+      } else {
+        tick();
+      }
+    }
+
+    sync();
+    zoomToFit(network.zoomLevel);
+    svg.attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
+
+    function tick() {
+      singleLinks
+        .filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
+        .attr('x1', function(d) { return d.source.x; })
+        .attr('y1', function(d) { return d.source.y; })
+        .attr('x2', function(d) { return d.target.x; })
+        .attr('y2', function(d) { return d.target.y; });
+
+      //doubleLinks
+        //.filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
+        //.selectAll('line')
+          //.attr('x1', function(d) { return d.source.x; })
+          //.attr('y1', function(d) { return d.source.y; })
+          //.attr('x2', function(d) { return d.target.x; })
+          //.attr('y2', function(d) { return d.target.y; });
+
+      nodes
+        .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, network.zoomLevel ) + ')'; })
+        .classed('show', function(d) { return !d.level || d.level <= network.zoomLevel });
+    }
+
+    function applyOnClickNode() {
       if (scope.onClickNode) {
         nodes.on('click', function(data, i) {
           if (d3.event.defaultPrevented) {
@@ -588,37 +615,6 @@
           });
         }); 
       }
-
-      if ( members.some(function(d) { return d.x === undefined; }) ) {
-        force.start();
-      } else {
-        tick();
-      }
-    }
-
-    sync();
-    zoomToFit(network.zoomLevel);
-    svg.attr('transform', 'translate(' + zoom.translate() + ')scale(' + zoom.scale() + ')');
-
-    function tick() {
-      singleLinks
-        .filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
-        .attr('x1', function(d) { return d.source.x; })
-        .attr('y1', function(d) { return d.source.y; })
-        .attr('x2', function(d) { return d.target.x; })
-        .attr('y2', function(d) { return d.target.y; });
-
-      //doubleLinks
-        //.filter(function(d) { return !d.source.level || d.source.level <= network.zoomLevel; })
-        //.selectAll('line')
-          //.attr('x1', function(d) { return d.source.x; })
-          //.attr('y1', function(d) { return d.source.y; })
-          //.attr('x2', function(d) { return d.target.x; })
-          //.attr('y2', function(d) { return d.target.y; });
-
-      nodes
-        .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')scale(' + nodeScale( d, network.zoomLevel ) + ')'; })
-        .classed('show', function(d) { return !d.level || d.level <= network.zoomLevel });
     }
 
     force.on('tick', tick);
@@ -657,6 +653,12 @@
           return;
         }
       },
+
+      onClickNode: function(onClickNode) {
+        scope.onClickNode = onClickNode;
+        applyOnClickNode();
+      },
+
 
       /**
        * Removes the given node from the graph; node is a data object, not a DOM node.
@@ -793,10 +795,14 @@
       });
     }
 
+    if (scope.onClickNode) {
+      network.onClickNode(scope.onClickNode);
+    }
+
     return network;
   }
 
-  angular.module('clNetwork', [])
+  angular.module('clNetwork', [ 'ui.bootstrap' ])
 
     /**
      * This service provides data that is useful when interacting with the network diagram.
@@ -910,7 +916,6 @@
             onLoad: '&',
             onClickNode: '&',
             nodes: '=',
-            zoom: '=',
             overlays: '='
           },
           link: function(scope, element) {
@@ -926,10 +931,6 @@
               if ( nv ) {
                 network = buildGraph( nodeTypes, networkEl, nv, scope );
               }
-            });
-
-            scope.$watch('zoom', function(nv) {
-              network.zoom(nv);
             });
 
             scope.$watch('overlays', function(nv) {

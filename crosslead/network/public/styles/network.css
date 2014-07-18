@@ -6780,9 +6780,84 @@ network .level-5 {
 }
 network .selection, network .selected {
   fill: none;
-  stroke: #888;
+  stroke: #000;
   stroke-width: 1.5px;
   stroke-dasharray: 5,5;
+}
+
+network-control button.openControls {
+  position: absolute;
+  top: 200px;
+  left: -34px;
+  display: inline-block;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  opacity: 1;
+}
+network-control button.openControls.ng-hide {
+  left: 232px;
+  opacity: 0;
+}
+network-control button.openControls.ng-hide-add.ng-hide-add-active, network-control button.openControls.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all ease-in 0.5s;
+  transition: all ease-in 0.5s;
+}
+network-control .drawer {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 0 8px 8px;
+  left: 0px;
+}
+network-control .drawer.ng-hide {
+  left: -300px;
+}
+network-control .drawer.ng-hide-add.ng-hide-add-active, network-control .drawer.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all ease-in 0.5s;
+  transition: all ease-in 0.5s;
+}
+network-control .drawer button.closeControls {
+  display: block;
+  margin-bottom: 8px;
+  width: 284px;
+  text-align: left;
+}
+network-control .drawer .scroller {
+  height: 100%;
+  overflow: auto;
+  padding-right: 8px;
+}
+network-control .drawer .accordion-toggle {
+  display: inline-block;
+  width: 100%;
+}
+network-control .drawer .header {
+  border-bottom: 1px solid #000;
+  margin-bottom: 8px;
+}
+network-control .drawer label {
+  clear: left;
+  float: left;
+}
+network-control .drawer .field {
+  margin: 8px 0 0 100px;
+}
+network-control .drawer .field input {
+  width: 100%;
+}
+network-control .drawer .buttons {
+  margin-top: 8px;
+  clear: both;
+}
+network-control .drawer img {
+  float: right;
+  margin: 0 0 8px 8px;
+  border: 1px solid #000;
+}
+network-control .drawer .zoom {
+  width: 42px;
 }
 
 body {
@@ -6797,67 +6872,4 @@ button.btn:focus, button.btn:active:focus {
 
 .networkContainer {
   position: relative;
-}
-.networkContainer .btnBar {
-  position: absolute;
-  left: 8px;
-  bottom: 8px;
-}
-.networkContainer button.overlay {
-  padding: 4px 9px;
-  height: 28px;
-}
-.networkContainer .zoom {
-  width: 32px;
-}
-.networkContainer .helpBtn {
-  margin-left: 32px;
-}
-.networkContainer .communicationBtn {
-  margin-left: 32px;
-}
-.networkContainer .panes {
-  position: absolute;
-  bottom: 8px;
-  right: 0px;
-}
-.networkContainer .help, .networkContainer .editor, .networkContainer .card {
-  filter: blur(5px);
-  background: #fff;
-  border-radius: 4px;
-  width: 400px;
-  min-height: 218px;
-  padding: 8px;
-  margin: 8px 8px 0 0;
-}
-.networkContainer .help .header, .networkContainer .editor .header, .networkContainer .card .header {
-  border-bottom: 1px solid #000;
-  margin-bottom: 8px;
-}
-.networkContainer .help label, .networkContainer .editor label, .networkContainer .card label {
-  clear: left;
-  float: left;
-}
-.networkContainer .help .field, .networkContainer .editor .field, .networkContainer .card .field {
-  margin: 8px 0 0 100px;
-}
-.networkContainer .help .field input, .networkContainer .editor .field input, .networkContainer .card .field input {
-  width: 100%;
-}
-.networkContainer .help .buttons, .networkContainer .editor .buttons, .networkContainer .card .buttons {
-  margin-top: 8px;
-  clear: both;
-}
-.networkContainer .card {
-  width: 500px;
-}
-.networkContainer .card img {
-  float: right;
-  margin: 0 0 8px 8px;
-  border: 1px solid #000;
-}
-
-.editor, .help, .card {
-  border: 1px solid #000;
-  box-shadow: 2px 2px 3px #ccc;
 }
