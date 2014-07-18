@@ -1,0 +1,103 @@
+<button class="btn openControls" ng-click="expanded = true" ng-show="!expanded">
+ Controls
+ <i class="fa fa-arrow-circle-down"></i>
+</button>
+<div class="drawer" ng-show="expanded">
+  <button class="btn closeControls" ng-click="expanded = false">
+   <i class="fa fa-arrow-circle-left"></i>
+   Close
+  </button>
+  <div class="scroller">
+    <accordion close-others="false">
+      <accordion-group heading="Controls" is-open="true">
+       <button class="btn btn-success overlay zoom" ng-click="zoomOut()"><i class="fa fa-minus"></i></button>
+       <button class="btn btn-success overlay zoom" ng-click="zoomIn()"><i class="fa fa-plus"></i></button>
+
+      </accordion-group>
+      <accordion-group heading="Details" ng-show="selected" is-open="true">
+        <div class="header">
+         <img ng-show="selected.img" ng-src="{{selected.img}}">
+         {{ selected.name }}
+        </div>
+        <div style="clear:both;">
+         <div>
+          <label>Position</label>
+          <div class="field">{{ selected.position }}</div>
+         </div>
+         <div>
+          <label>Profession</label>
+          <div class="field">{{ selected.profession }}</div>
+         </div>
+         <div>
+          <label>Company</label>
+          <div class="field">{{ selected.company }}</div>
+         </div>
+         <div>
+          <label>Business Unit</label>
+          <div class="field">{{ selected.businessUnit }}</div>
+         </div>
+         <div>
+          <label>Department</label>
+          <div class="field">{{ selected.department }}</div>
+         </div>
+         <div>
+          <label>Group</label>
+          <div class="field">{{ selected.employeeGroup }}</div>
+         </div>
+         <div>
+          <label>Hire Date</label>
+          <div class="field">{{ selected.hireDate }}</div>
+         </div>
+         <div>
+          <label>Location</label>
+          <div class="field">{{ selected.location }}</div>
+         </div>
+        </div>
+      </accordion-group>
+      <accordion-group is-open="false">
+        <accordion-heading>
+          Communication Insights
+        </accordion-heading>
+       <button class="btn {{ communication ? 'btn-success' : '' }} overlay communicationBtn" ng-click="toggleCommunication()">Active</button>
+      </accordion-group>
+      <accordion-group heading="Editor" ng-show="selected">
+        <div>
+         <div>
+          <label for="name">Name</label>
+          <div class="field"><input id="name" type="text" ng-model="selected.name"></div>
+         </div>
+         <div>
+          <label for="nodeType">Type</label>
+          <div class="field"><select id="nodeType" ng-model="selected.type" ng-options="node.name as node.name for node in networkNodeTypes.all"></select></div>
+         </div>
+         <div ng-show="type !== 'label'">
+          <label for="img">Image URL</label>
+          <div class="field"><input id="img" type="text" ng-model="selected.img"></div>
+         </div>
+         <div>
+          <label for="fixed">Fixed</label>
+          <div class="field"><input id="fixed" type="checkbox" ng-model="selected.fixed"></div>
+         </div>
+         <div>
+          <label for="scale">Scale</label>
+          <div class="field"><input id="scale" type="text" ng-model="selected.scale"></div>
+         </div>
+         <div class="buttons" ng-show="type !== 'label'">
+          <button class="btn btn-success" ng-click="addNode()">Add Node</button>
+          <button class="btn btn-danger" ng-click="removeNode()">Remove Node</button>
+         </div>
+        </div>
+      </accordion-group>
+      <accordion-group heading="Help">
+        <ul>
+         <li>Click to select
+         <li>Drag to move nodes and pan, scrollwheel to zoom
+         <li>Shift+Click and/or Shift-drag to select multiple nodes
+        </ul>
+        <button class="btn btn-success fix" ng-click="fixAll()">Fix Nodes</button>
+        <button class="btn btn-success free" ng-click="freeAll()">Free Nodes</button>
+       </div>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>
