@@ -5,10 +5,15 @@ angular.module('clNetworkTest', ['clNetworkDataMock', 'clNetwork', 'ngAnimate'])
       $scope.height = Math.round($(window).height());
       $scope.network = null;
 
-      window.onorientationchange = window.onresize = function() {
+      function updateSize() {
         $scope.$apply(function() {
           $scope.height = Math.round($(window).height());
         });
+      }
+
+      window.onorientationchange = window.onresize = function() {
+        updateSize();
+        setTimeout(updateSize, 50);
       }
 
       var params = {};
